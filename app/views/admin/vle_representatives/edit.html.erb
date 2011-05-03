@@ -1,0 +1,15 @@
+<div class="form-container">
+    <%= form_for(@user,:url=>{:action=>'update'},:html=>{:class=>'cmxform'}) do |f| %>
+    <%=render :partial=>'form',:locals=>{:f=>f,:button_name=>'Update',:heading=>'Edit VLE Profile'} %>
+    <% end %>
+    </div>
+
+
+<div class="bottom_links">
+    
+    <a href="/admin/vle_representatives" class="more">&larr; All VLE Profile</a>
+
+    <%= link_to 'Show',{:action=>'show',:id=>@user.id},:class=>'more'%>
+    
+</div>
+

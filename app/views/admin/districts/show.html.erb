@@ -1,0 +1,61 @@
+<div class="form-container">
+    <fieldset>
+        <legend>
+       </legend>
+        <div>
+            <label>
+                <b>Name:</b>
+            </label>
+            <%=h @district.name %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Description:</b>
+            </label>
+            <%=h @district.description %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Bidding Zone Name:</b>
+            </label>
+            <%=h @district.bidding_zone.name %>
+        </div>
+
+        <hr/>
+        <div>
+            <label>
+                <b>State Name:</b>
+            </label>
+            <%=h @district.state.name %>
+        </div>
+        <hr/>
+        <div>
+
+            <label>
+                <b>Created by:</b>
+            </label>
+            <%= User.find(@district.created_by).name %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Created At:</b>
+            </label>
+            <%= @district.created_at.strftime('%d-%m-%Y %H:%M:%S') %>
+        </div>
+    </fieldset>
+</div>
+<div class="bottom_links">
+    <a href="/admin/districts" class="more">&larr; All Districts</a>
+    &nbsp;&nbsp;
+    <%= link_to edit_admin_district_path(@district),:class=>'more' do %>
+    Edit &uarr;
+    <% end %>
+    &nbsp;&nbsp;
+    <%=link_to new_admin_district_path,:class=>'more' do %>
+    Create New District &rarr;
+    <% end %>
+</div>
+

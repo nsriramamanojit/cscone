@@ -1,0 +1,34 @@
+<h1 align="center"> CSCONE </h1>
+<hr>
+<h2 align="center">Bank Transactions Report</h2>
+<br>
+<table class="tablesorter" cellspacing="1">
+	<thead>
+	<tr>
+	        <th>Name</th>		
+		<th>Email</th>	
+                <th>Zone</th>
+                <th>District </th>
+                <th>Block </th>
+		<th>Total Transactions </th>	
+		<th>Amount</th>
+	</tr>
+	</thead>
+    <% for transaction in @transactions %>
+  <tr>
+  <td><%=h transaction.user.name%></td>
+  <td><%=h transaction.user.email%></td>
+  <td><%=h transaction.user.vle_representative_profile.bidding_zone.name%></td>
+  <td><%=h transaction.user.vle_representative_profile.district.name%></td>
+  <td><%=h transaction.user.vle_representative_profile.csc_block.name%></td>
+  <td><%=h transaction.records %></td>
+    <td><%=h transaction.records * 6 %></td>
+  
+</tr>
+<% end %>
+</table>
+
+
+
+
+

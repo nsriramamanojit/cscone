@@ -1,0 +1,44 @@
+<div class="form-container">
+<%= form_for(@banking) do |form| %>
+ <p class="legend"><strong>Note:</strong> Required fields are marked with an asterisk (<em>*</em>)</p>
+<fieldset>
+<legend><%=heading %></legend>
+
+ <%= form.error_messages %>
+
+<div>
+    <label for="bank_name">Bank Name<em>*</em></label>
+   <%= form.text_field :bank_name, :value=>'STATE BANK OF INDIA' %>
+  </div>
+  <div>
+    <label for="name_of_holder">Name Of Account Holder<em>*</em></label>
+   <%= form.text_field :name_of_holder%>
+  </div>
+<div>
+    <label for="account_type">Account Type <em>*</em></label>
+ <%= collection_select(:banking,:account_type_id,AccountType.order('name'),:id,:name,:prompt=>"Select Account Type") %>
+
+
+  </div>
+<div>
+    <label for="account_number">Account Number <em>*</em></label>
+   <%= form.text_field :account_number %>
+  </div>
+  <div>
+    <label for="father_name">Father Name</label>
+   <%= form.text_field :father_name %>
+  </div>
+  
+<div>
+    <label for="address">Address</label>
+   <%= form.text_field :address %>
+  </div>
+ <div><label for="date_of_birth "> Date<em>*</em> </label>
+   <%= form.date_select:date,:start_year => 1940 %>
+        </div>
+ <div class="buttonrow">
+    <%= form.submit button_name ,:class=>'button'%>
+  </div>
+  </fieldset>
+<% end %>
+</div>

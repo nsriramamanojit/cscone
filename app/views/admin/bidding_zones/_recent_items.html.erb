@@ -1,0 +1,11 @@
+<% for bidding_zones in @recent_bidding_zones %>
+<li class="" id="recent_bidding_zones_<%= bidding_zones.id%>">
+    <dt>
+        <%=link_to truncate(bidding_zones.name,:length=>27),admin_bidding_zones_path(bidding_zones) %>
+    </dt>
+    <tt>
+        <br/>
+    </tt>
+</li>
+<% end %>
+

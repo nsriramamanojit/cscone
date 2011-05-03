@@ -1,0 +1,45 @@
+<%content_tag_for(:tr,vle_document) do -%>
+<td>
+    <%=link_to(highlight(vle_document.agreement_paper,params[:search]),admin_vle_document_path(vle_document)) %>
+</td>
+
+<td>
+    <%=h vle_document.address_proof %>
+</td>
+<td>
+    <%=h vle_document.education_proof %>
+</td>
+<td>
+    <%=h vle_document.photograph_proof %>
+</td>
+<td>
+    <%=h vle_document.dd_number %>
+</td>
+<td>
+    <%=h vle_document.dd_date %>
+</td>
+<td>
+    <%=h vle_document.dd_bank_name %>
+</td>
+<td>
+    <%=h vle_document.dd_branch_name %>
+</td>
+<td>
+    <%=h vle_document.dd_amount%>
+</td>
+
+<td>
+    <%=h @created_name %>
+</td>
+<td>
+    <%=h vle_document.created_at.strftime('%d-%m-%Y %H:%M:%S') %>
+</td>
+<td>
+
+    <%= link_to 'Edit', edit_admin_vle_document_path(vle_document) %>|
+
+    <%= link_to 'Destroy', [:admin,vle_document], :confirm => 'Are you sure?', :method => :delete %>|
+    <%= link_to 'Show', [:admin,vle_document] %>
+</td>
+<% end %>
+

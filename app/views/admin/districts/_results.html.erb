@@ -1,0 +1,46 @@
+<div id="district_list" class="list">
+    <%if @districts.blank? %>
+    <div class="empty">There are no Districts yet..!</div>
+    <%else %>
+    <table width="100%">
+        <tr>
+            <td align="left">
+                <h3 align="left"><%=@table_heading ||= 'Listing Districts' %></h3>
+            </td>
+            <td align="right">
+                <b><i>per page</i></b>
+                <%=per_page %> | <%= page_entries_info @districts %>
+            </td>
+        </tr>
+    </table>
+    <table class="tablesorter" cellspacing="1">
+        <thead>
+            <tr>
+
+                <th>
+                   <%= sortable 'name' %>
+                </th>
+                <th>
+                  <%= sortable 'state name' %>
+                </th>
+                <th>
+                  <%= sortable 'bidding zone name' %>
+                </th>
+                <th>
+                     <%= sortable 'description' %>
+                </th>
+               <th><%= sortable "created_by" %></th>
+		<th><%= sortable "created_at" %></th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <%=render :partial=>'district',:collection=>@districts %>
+    </table>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+    <%= will_paginate @districts %>
+    <% end %>
+</div>
+

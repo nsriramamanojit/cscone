@@ -1,0 +1,83 @@
+<div id="vle_representative_list" class="list">
+    <%if @vle_users.blank? %>
+    <div class="empty">There are no VLE Representatives yet..!</div>
+    <%else %>
+    <table width="100%">
+        <tr>
+            <td align="left">
+                <h3 align="left"><%=@table_heading ||= 'Listing VLE Reports' %></h3>
+            </td>
+            
+        </tr>
+    </table>
+    <table class="tablesorter" cellspacing="1">
+        <thead>
+            <tr>
+
+                <th>
+               <%= sortable 'name' %>
+                </th>
+                <th>
+               <%= sortable 'email' %>
+                </th>
+              
+                <th>
+               <%= sortable 'biddingZoneName' %>
+                </th>
+
+                <th>
+                    <%= sortable 'districtname' %>
+                </th>
+                <th>
+                   <%= sortable 'cscblockname' %>
+                </th>
+                <th>
+                   <%= sortable 'Bankings' %>
+                </th>
+                 <th>
+                   <%= sortable 'Bank Transactions' %>
+                </th>
+                 <th>
+                   <%= sortable 'Insurances' %>
+                </th>
+                 <th>
+                   <%= sortable 'Insurance Transactions' %>
+                </th> 
+             </tr>
+        </thead>
+        <% for vle_user in @vle_users -%>
+<tr>
+<td>
+<%=link_to(highlight(vle_user.name,params[:search]),admin_vle_representative_path(vle_user)) %>
+</td>
+
+<td>
+ <%=h vle_user.email %>
+</td>
+<td>
+ <%=h vle_user.vle_representative_profile.bidding_zone.name %>
+</td>
+<td>
+ <%=h vle_user.vle_representative_profile.district.name %>
+</td>
+<td>
+ <%=h vle_user.vle_representative_profile.csc_block.name %>
+</td>
+<td>
+ <%=vle_user.bankings.size%>
+</td>
+<td>
+ <%=vle_user.transactions.size%>
+</td>
+<td>
+ <%=vle_user.insurances.size%>
+</td>
+<td>
+ <%=vle_user.insurance_transactions.size%>
+</td>
+</tr>
+<% end %>
+<% end %>
+</table>
+</div>
+

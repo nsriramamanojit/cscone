@@ -1,0 +1,64 @@
+<div class="form-container">
+<fieldset>
+<legend><b><%=@user.name %></b></legend>
+
+<div>
+   <label><b>Email:</b></label>
+  <%=h @user.email %>
+</div>
+<hr/>
+
+<div>
+   <label><b>Login Count:</b></label>
+  <%=h @user.login_count %>
+</div>
+<hr/>
+
+<div>
+   <label><b>Last Request At:</b></label>
+  <%=h @user.last_request_at %>
+</div>
+<hr/>
+
+<div>
+   <label><b>Last Login at:</b></label>
+ <%=h @user.last_login_at %>
+</div>
+<hr/>
+
+<div>
+   <label><b>Current login at:</b></label>
+ <%=h @user.current_login_at %>
+</div>
+<hr/>
+
+<div>
+   <label><b>Last login ip:</b></label>
+  <%=h @user.last_login_ip %>
+</div>
+<hr/>
+
+<div>
+   <label><b>Current login ip:</b></label>
+    <%=h @user.current_login_ip %>
+</div>
+
+</fieldset>
+</div>
+
+<div class="bottom_links">
+<% if permitted_to? :edit, @user %>
+<%= link_to edit_user_path(@user),:class=>'more' do %>
+Edit &uarr;
+<% end %>
+<% end %>
+&nbsp;&nbsp;
+
+<a href="/admin/users" class="more">&larr; All Users</a>
+&nbsp;&nbsp;
+<% if permitted_to? :new, :users %>
+<%=link_to new_admin_user_path,:class=>'more' do %>
+Create New User &rarr;
+<% end %>
+<% end %>
+</div>

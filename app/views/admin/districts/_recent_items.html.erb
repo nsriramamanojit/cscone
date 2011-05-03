@@ -1,0 +1,11 @@
+<% for district in  @recent_districts %>
+<li class="" id="recent_district_<%= district.id%>">
+    <dt>
+        <%=link_to truncate(district.name,:length=>27),admin_district_path(district) %>
+    </dt>
+    <tt>
+        <br/>
+    </tt>
+</li>
+<% end %>
+

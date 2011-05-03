@@ -1,0 +1,127 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td { margin:0; padding:0; }
+
+table { border-collapse:collapse; border-spacing:0; }
+fieldset,img { border:0; }
+address,caption,cite,code,dfn,em,strong,th,var{ font-family: Georgia, "MS Trebuchet",
+
+ sans-serif;
+ font-style:normal; font-weight:normal; }
+
+ol,ul { margin:1em 0; margin-left:40px; padding-left:0; }
+
+ul { list-style-type:disc; }
+
+ol { list-style-type:decimal; }
+
+caption,th { text-align:left; }
+
+h1,h2,h3,h4,h5,h6 { font-size:100%; }
+
+.headline{
+	background-color: #2F3738;
+	height: 50px;
+	padding-top: 20px;
+	padding-left: 30px;
+	border-bottom: 1px solid #c0b6b6;
+	
+}
+
+.headline h1{
+	color: #fff;
+	font-size: 150%;
+}
+
+.info-container{
+	height: 30px;
+	background-color: #9FBCBF;
+	border-bottom: 1px solid #c0b6b6;
+}
+
+
+.info {
+	margin-left: 30px;
+	padding-top: 5px;
+}
+.menu-container{
+	height: 30px;
+	background-color: #44a383;
+}
+.menu {
+	margin-left: 30px;
+	padding-top: 5px;
+}
+
+.footer{
+	height: 30px;
+	background-color: #9FBCBF;
+	font-size: 60%;
+	padding-top: 10px;
+	text-align: center;
+}	
+.page-body-container{
+	background-color: #DDD; /* #DDD */
+	border: 1px solid #999;
+}
+
+.page-body{
+	margin-left: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 20px;
+	padding: 15px;
+	min-height: 500px;
+	border: 10px solid #d2d2d2;
+	-moz-border-radius: 1em;
+	color: #000000; /* 585858 */
+	font-size: 14px;
+	line-height : 150%;
+}
+
+.page-body hr{
+	color: #d2d2d2;
+}
+
+.pb-left{
+	float:left;
+	width:22%;
+	background:#d1e7ee;
+	padding: 10px;
+	min-height: 200px;
+	height:auto;
+	margin-right: 10px;
+	-moz-border-radius: 0.3em;
+	border: 1px solid #9FBCBF;
+	
+}
+
+.pb-right {
+	float: left;
+	padding: 10px;
+	width:73.5%;
+	background:#e5e5e5;
+	min-height: 450px;
+	-moz-border-radius: 0.3em;
+
+}
+
+table{
+	border: 1px solid #CCC;
+	padding: 2px;
+	
+}
+
+td{
+	border: 1px solid #CCC;
+	padding: 5px;
+	
+}
+
+th{
+	border: 1px solid #CCC;
+	padding: 5px;
+	font: 15px "Garamond", "Trebuchet MS", Verdana, sans-serif;
+	
+	
+}
+
+

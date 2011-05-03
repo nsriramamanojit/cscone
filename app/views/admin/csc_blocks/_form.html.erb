@@ -1,0 +1,49 @@
+<div class="form-container">
+    <% form_for([:admin,@csc_block],:html=>{:class=>'cmxform'}) do |f| %>
+    <p class="legend">
+        <strong>Note:</strong>
+        Required fields are marked with an asterisk (<em>*</em>)
+    </p>
+    <fieldset>
+        <legend>
+            <%= heading %>
+        </legend>
+        <%= f.error_messages %>
+
+        <div>
+            <label for="name">
+                Name <em>*</em>
+            </label>
+            <%= f.text_field :name %>
+        </div>
+        <div>
+        <label for="state_id">
+          State Name<em>*</em>
+          </label>
+          <%= f.collection_select :state_id, State.order('name'), :id, :name ,{:prompt=>'Select state'},{ :onchange=>"#{remote_function(:url=>{:action=>'load_bidding_zones'},:with =>"'id='+value")}" }%>
+          </div>
+          <div>
+               <label for="bidding_zone_id">
+          Bidding Zone Name<em>*</em>
+          </label>
+          <%= f.collection_select :bidding_zone_id,{}, :id, :name,{:prompt =>'Select biddingzone'}%>
+          </div>
+        <div>
+        <label for="district_id">
+        District Name<em>*</em>
+        </label>
+      <%= f.collection_select :district_id, {},:id, :name,{:prompt =>'Select district'} %>
+        </div>
+          <div>
+            <label for="description ">
+                Description <em>*</em>
+            </label>
+            <%= f.text_area :description ,:cols=>28,:rows=>5 %>
+        </div>
+        <div class="buttonrow">
+            <%= f.submit button_name ,:class=>'button' %>
+        </div>
+    </fieldset>
+    <% end %>
+</div>
+

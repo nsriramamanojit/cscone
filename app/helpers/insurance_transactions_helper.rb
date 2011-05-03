@@ -1,0 +1,2 @@
+module InsuranceTransactionsHelper
+end

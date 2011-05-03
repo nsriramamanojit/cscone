@@ -1,0 +1,34 @@
+<h1>List VLE's</h1>
+<%if @vles.blank?%>
+<b>There are No VLE's yet..!</b> 
+<%else%>
+<table class="tablesorter" cellspacing="1">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>State</th>
+    <th>Bidding Zone</th>
+    <th>District</th>
+    <th>CSC Block</th>
+    <th>Phone</th>   
+    <th>Address</th>              
+  </tr>
+
+<% @vles.each do |vle| %>
+  <tr>
+    <td><%= link_to vle.user.name, {:action => 'show', :id => vle.id}%></td>
+    <td><%= vle.user.email %></td>
+    <td><%= vle.state.name %></td>
+    <td><%= vle.bidding_zone.name %></td>
+    <td><%= vle.district.name %></td>
+    <td><%= vle.csc_block.name %></td>
+    <td><%= vle.user.phone_number %></td>
+    <td><%= vle.address %></td>
+    
+  </tr>
+<% end %>
+</table>
+<% end %>
+<br />
+
+

@@ -1,0 +1,2 @@
+module BankingsHelper
+end

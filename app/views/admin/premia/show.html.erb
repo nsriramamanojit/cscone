@@ -1,0 +1,41 @@
+<div class="form-container">
+    <fieldset>
+        <legend>
+            <b><%= @premium.name %></b>
+        </legend>
+        <div>
+            <label>
+                <b>Name:</b>
+            </label>
+            <%=h @premium.name %>
+        </div>
+        <hr/>
+       
+        <div>
+            <label>
+                <b>Created by:</b>
+            </label>
+            <%= User.find(@premium.created_by).name %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Created At:</b>
+            </label>
+            <%= @premium.created_at.strftime('%d-%m-%Y %H:%M:%S') %>
+        </div>
+        
+    </fieldset>
+</div>
+<div class="bottom_links">
+    <a href="/admin/premiums" class="more">&larr; All Account Types</a>
+    &nbsp;&nbsp;
+    <%= link_to edit_admin_premium_path(@premium),:class=>'more' do %>
+    Edit &uarr;
+    <% end %>
+    &nbsp;&nbsp;
+    <%=link_to new_admin_premium_path,:class=>'more' do %>
+    Create New premium &rarr;
+    <% end %>
+</div>
+

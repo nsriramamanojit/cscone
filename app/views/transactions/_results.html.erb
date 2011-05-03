@@ -1,0 +1,45 @@
+<div id="transaction_list" class="list">
+    <%if @transactions.blank? %>
+    <div class="empty">There are no transactions yet..!</div>
+    <%else %>
+    <table width="100%">
+        <tr>
+            <td align="left">
+                <h3 align="left"><%=@table_heading ||= 'Listing Transactions' %></h3>
+            </td>
+            <td align="right">
+                <b><i>per page</i></b>
+                <%=per_page %> | <%= page_entries_info @transactions %>
+            </td>
+        </tr>
+    </table>
+    <table class="tablesorter" cellspacing="1">
+        <thead>
+            <tr>
+
+                <th>
+                  <%= sortable 'account number' %>
+                </th>
+               
+                <th>
+                <%= sortable 'bank name' %>
+                  
+                </th>
+                <th>
+                  Mode Of Transaction
+                </th>
+                
+                <th>
+                  Amount
+                </th>
+                 <th>
+                    Action
+                </th>
+        <%=render :partial=>'transaction',:collection=>@transactions %>
+    </table>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+    <%= will_paginate @transactions%>
+    <% end %>
+</div>
+

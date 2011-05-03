@@ -1,0 +1,112 @@
+<div id="vle_document_list" class="list">
+    <%if @vle_documents.blank? %>
+    <div class="empty">
+        There are no VLE Documents yet..!
+    </div>
+    <%else %>
+    <table width="100%">
+        <tr>
+            <td align="left">
+                <h3 align="left"><%=@table_heading ||= 'Listing VLE Documents' %></h3>
+            </td>
+            <td align="right">
+                <b><i>per page</i></b>
+                <%=per_page %>| 
+            </td>
+        </tr>
+    </table>
+    <table class="tablesorter" cellspacing="1">
+        <thead>
+            <tr>
+            	<th>
+                    Representative Name
+                </th>
+                <th>
+                    Agreement Paper
+                </th>
+                
+                <th>
+                    Address Proof
+                </th>
+                <th>
+                    Education Proof
+                </th>
+                <th>
+                    Photograph Proof
+                </th>
+                
+                <th>
+                    DD Date
+                </th>
+				<th>
+                    DD Number
+                </th>
+                <th>
+                    DD Bank Name
+                </th>
+                <th>
+                    DD Branch Name
+                </th>
+                <th>
+                    DD Amount
+                </th>
+                <th>
+                    Created By
+                </th>
+                <th>
+                    Created At
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+        </thead>
+        <% for vle_document in @vle_documents %>
+        <tr>
+            <td>
+                <%=link_to(highlight(vle_document.user.name,params[:search]),admin_vle_document_path(vle_document)) %>
+            </td>
+			 <td>
+                <%=h vle_document.agreement_paper %>
+            </td>
+            <td>
+                <%=h vle_document.address_proof %>
+            </td>
+            <td>
+                <%=h vle_document.education_proof %>
+            </td>
+            <td>
+                <%=h vle_document.photograph_proof %>
+            </td>
+            <td>
+                <%=h vle_document.dd_number %>
+            </td>
+            <td>
+                <%=h vle_document.dd_date %>
+            </td>
+            <td>
+                <%=h vle_document.dd_bank_name %>
+            </td>
+            <td>
+                <%=h vle_document.dd_branch_name %>
+            </td>
+            <td>
+                <%=h vle_document.dd_amount %>
+            </td>
+            <td>
+                <%=h @created_name %>
+            </td>
+            <td>
+                <%=h vle_document.created_at.strftime('%d-%m-%Y %H:%M:%S') %>
+            </td>
+            <td>
+                <%= link_to 'Edit', edit_admin_vle_document_path(vle_document) %>|<%= link_to 'Destroy', [:admin,vle_document], :confirm => 'Are you sure?', :method => :delete %>|<%= link_to 'Show', [:admin,vle_document] %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+   
+    <% end %>
+</div>

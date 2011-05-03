@@ -1,0 +1,34 @@
+<h1 align="center"> CSCONE </h1>
+<hr>
+<h2 align="center">Insurance Report</h2>
+<br>
+<table class="tablesorter" cellspacing="1">
+	<thead>
+	<tr>
+	        <th>Name</th>		
+		<th>Email</th>	
+                <th>ZoneName</th>
+                <th>District </th>
+                <th>Block </th>
+		<th>Total Transactions</th>	
+		<th>Amount</th>
+	</tr>
+	</thead>
+    <% for insurance_transaction in @insurance_transactions %>
+  <tr>
+  <td><%=h insurance_transaction.user.name%></td>
+  <td><%=h insurance_transaction.user.email%></td>
+  <td><%=h insurance_transaction.user.vle_representative_profile.bidding_zone.name%></td>
+  <td><%=h insurance_transaction.user.vle_representative_profile.district.name%></td>
+  <td><%=h insurance_transaction.user.vle_representative_profile.csc_block.name%></td>
+  <td><%=h insurance_transaction.records %></td>
+  <td><%=h insurance_transaction.records  * 4 %></td>
+  
+</tr>
+<% end %>
+</table>
+
+
+
+
+

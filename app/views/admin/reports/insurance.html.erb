@@ -1,0 +1,17 @@
+<div class="form-container">
+  <fieldset>
+<legend>Insurance  Reports</legend>
+<%= form_tag(:action=>'insurance_report') do %>
+<div> <label for="name">From :</label>
+<%= date_select("report", "start_date", :order => [:day, :month, :year])%>
+</div>
+<div> <label for="name">To : </label>
+<%= date_select("report", "end_date", :order => [:day, :month, :year])%>
+</div>
+ <div class="buttonrow">
+            <%=submit_tag 'Create Report' ,:class=>'button' %>
+      </div>
+<% end %>
+ </fieldset>
+</div>
+

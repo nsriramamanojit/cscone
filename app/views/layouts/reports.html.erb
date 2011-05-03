@@ -1,0 +1,47 @@
+<%=render :partial=>'admin/header' %>
+<table class="tabbed" height="100%" width="100%" cellspacing="0" cellpadding="0">
+    <tr>
+        <!-- Start: SIDE BAR -->
+        <td id="sidebar" class="sidebar" valign="top">
+            <div class="filters">
+                
+                <h4></h4>
+                <div style='margin: 0px 0px 6px;'>
+                
+                </div>
+            </div>
+            <div class='panel'>
+                <div id='accordion'>
+                    <h3><a href="#">Recent <%=controller_name.titleize %></a></h3>
+                    <div id='recently'>
+                   
+                    </div>
+                </div>
+            </div>
+        </td>
+        <!-- END: SIDE BAR -->
+        <td id='main' class='main' valign='top'>
+           <%=bulk_sub_menu %>
+           <%=sub_menu %>
+            <div class='title_tools'>
+               
+              </div>
+            <div class='title'>
+                <span><%=controller_name.titleize %></span>
+                <img alt='Loading' id='loading' src='/images/loading.gif' style='display: none;' width='16' height='16'/>
+            </div>
+            <div id='options' class='remote' style='display: none;'>
+            </div>
+            <div id="create_#{controller_name.singularize}" class='remote' style='display: none;'>
+            </div>
+            <div id='flash' style='display: none;'>
+            
+            </div>
+            
+            <%=render :partial=>'admin/import_flash' %>
+            <%=yield %>
+        </td>
+    </tr>
+</table>
+<%=render :partial=>'admin/footer' %>
+

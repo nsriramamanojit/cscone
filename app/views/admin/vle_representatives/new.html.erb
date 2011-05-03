@@ -1,0 +1,10 @@
+<div class="form-container">
+    <%= form_for(@user,:url=>{:action=>'create'},:html=>{:class=>'cmxform'}) do |f| %>
+    <%=render :partial=>'form',:locals=>{:f=>f,:button_name=>'create',:heading=>'New VLE Profile'} %>
+    <% end %>
+    </div>
+
+<div class="bottom_links">
+    <a href="/admin/vle_representatives" class="more">&larr; List All Users</a>
+</div>
+

@@ -1,0 +1,47 @@
+<div class="form-container">
+    <fieldset>
+        <legend>
+            <b><%= @bidding_zone.name %></b>
+        </legend>
+        <div>
+        <hr/>
+        <label>
+                <b>State Name:</b>
+            </label>
+            <%=h @bidding_zone.state.name %>
+        </div>
+<hr/>
+        <div>
+            <label>
+                <b>Description:</b>
+            </label>
+            <%=h @bidding_zone.description %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Created by:</b>
+            </label>
+            <%= User.find(@bidding_zone.created_by).name %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Created At:</b>
+            </label>
+            <%= @bidding_zone.created_at.strftime('%d-%m-%Y %H:%M:%S') %>
+        </div>
+    </fieldset>
+</div>
+<div class="bottom_links">
+    <a href="/admin/bidding_zones" class="more">&larr; All Bidding Zones</a>
+    &nbsp;&nbsp;
+    <%= link_to edit_admin_bidding_zone_path(@bidding_zone),:class=>'more' do %>
+    Edit &uarr;
+    <% end %>
+    &nbsp;&nbsp;
+    <%=link_to new_admin_bidding_zone_path,:class=>'more' do %>
+    Create New Bidding Zone &rarr;
+    <% end %>
+</div>
+

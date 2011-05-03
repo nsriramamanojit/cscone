@@ -1,0 +1,37 @@
+<div id="user_list" class="list">
+<%if @users.blank?%>
+<b><i> There are No Users yet..!</i></b> 
+<%else%>
+<table width="100%">
+	<tr><td align="left"><h3 align="left"><%=@table_heading ||= 'Listing Users'%></h3></td>
+	    <td align="right"><b><i>per page</i></b><%=per_page%> | 
+	     <%= page_entries_info @users %></td>
+	</tr>
+</table>
+<table class="tablesorter" cellspacing="1">
+	<thead>
+	<tr>
+		<th>Status</th>
+		<th><%= sortable "role" %></th>
+		<th><%= sortable "name" %></th>		
+		<th><%= sortable "Email"%></th>	
+		<th>Mobile Number </th>	
+		<th><%= sortable "created_by" %></th>
+		<th><%= sortable "created_at" %></th>
+		<th>Lost login at</th>
+		<th class="{sorter: false}">&nbsp;</th>
+		<th class="{sorter: false}">&nbsp;</th>		
+	</tr>
+	</thead>
+	
+	<%=render :partial=>'user',:collection=>@users%>
+</table>
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+<%= will_paginate @users %>
+<% end %>
+</div>
+
+
+
+

@@ -1,0 +1,6 @@
+<%= form_tag controller_name ,:method => 'get', :id => "#{controller_name}_search" do %>
+<p>
+    <%= text_field_tag :search, params[:search] ,:size=>18 %>
+    <%= submit_tag "Go", :name => nil %>&#8594
+</p>
+<% end %>

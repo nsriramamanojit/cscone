@@ -1,0 +1,65 @@
+<div class="form-container">
+    <fieldset>
+        <legend>
+            <b><%= @csc_block.name %></b>
+        </legend>
+        <div>
+            <label>
+                <b>Name:</b>
+            </label>
+            <%=h @csc_block.name %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>State Name:</b>
+            </label>
+            <%=h @csc_block.state.name %>
+        </div>
+        <div>
+            <label>
+                <b>Bidding Zone Name:</b>
+            </label>
+            <%=h @csc_block.bidding_zone.name %>
+        </div>
+        <div>
+            <label>
+                <b>District Name:</b>
+            </label>
+            <%=h @csc_block.district.name %>
+        </div>
+
+        <div>
+            <label>
+                <b>Description:</b>
+            </label>
+            <%=h @csc_block.description %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Created by:</b>
+            </label>
+            <%= User.find(@csc_block.created_by).name %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Created At:</b>
+            </label>
+            <%= @csc_block.created_at.strftime('%d-%m-%Y %H:%M:%S') %>
+        </div>
+    </fieldset>
+</div>
+<div class="bottom_links">
+    <a href="/admin/csc_blocks" class="more">&larr; All CSC Blocks</a>
+    &nbsp;&nbsp;
+    <%= link_to edit_admin_csc_block_path(@csc_block),:class=>'more' do %>
+    Edit &uarr;
+    <% end %>
+    &nbsp;&nbsp;
+    <%=link_to new_admin_csc_block_path,:class=>'more' do %>
+    Create New CSC Block &rarr;
+    <% end %>
+</div>
+

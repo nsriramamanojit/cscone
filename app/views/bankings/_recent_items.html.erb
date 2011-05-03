@@ -1,0 +1,10 @@
+<% for banking in @recent_bankings %>
+<li class="" id="recent_banking_<%= banking.id%>">
+    <dt>   
+		<%=link_to truncate(banking.name_of_holder,:length=>27),banking_path(banking)%>
+    </dt>
+    <tt>
+       <br/>
+    </tt>
+</li>
+<% end %>

@@ -1,0 +1,7 @@
+<%=render :partial=>'form',:locals=>{:button_name=>'Update',:heading=>'Edit Premium'} %>
+<div class="bottom_links">
+    <a href="/admin/premia" class="more">&larr; AllPremiums</a>
+    <%= link_to [:admin,@premium],:class=>'more' do %>
+    Show &uarr; <% end %>
+</div>
+

@@ -1,0 +1,57 @@
+<% for vle_user in @vle_users -%>
+<tr>
+<td>
+<%=link_to(highlight(vle_user.name,params[:search]),admin_vle_representative_path(vle_user)) %>
+</td>
+
+<td>
+ <%=h vle_user.email %>
+</td>
+<td>
+ <%=h vle_user.vle_representative_profile.state.name %>
+</td>
+<td>
+ <%=h vle_user.vle_representative_profile.bidding_zone.name %>
+</td>
+<td>
+ <%=h vle_user.vle_representative_profile.district.name %>
+</td>
+<td>
+ <%=h vle_user.vle_representative_profile.csc_block.name %>
+</td>
+<td>
+ <%=h vle_user.vle_representative_profile.father_name %>
+</td>
+<td>
+ <%=h vle_user.vle_representative_profile.address %>
+</td>
+<td>
+ <%=h vle_user.vle_representative_profile.pincode %>
+</td>
+<td>
+ <%=h vle_user.phone_number %>
+</td>
+<td>
+ <%=h vle_user.vle_representative_profile.date_of_birth %>
+</td>
+<td>
+ <%=h vle_user.vle_representative_profile.csc_panchayat %>
+</td>
+<td>
+ <%=h vle_user.status %>
+</td>
+<td>
+    <%=h @created_name %>
+</td>
+
+<td>
+  <%= link_to 'Edit', edit_admin_vle_representative_path(vle_user) %> |
+
+    <%= link_to 'Destroy', [:admin,vle_user], :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to 'Show', :action=>'show',:id=>vle_user.id %>
+</td>
+</tr>
+
+<% end %>
+
+

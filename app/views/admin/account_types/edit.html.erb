@@ -1,0 +1,7 @@
+<%=render :partial=>'form',:locals=>{:button_name=>'Update',:heading=>'Edit Account Type'} %>
+<div class="bottom_links">
+    <a href="admin/account_types" class="more">&larr; All Account Types</a>
+    <%= link_to [:admin,@account_type],:class=>'more' do %>
+    Show &uarr; <% end %>
+</div>
+

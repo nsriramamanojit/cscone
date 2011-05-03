@@ -1,0 +1,121 @@
+<div class="form-container">
+    <%= form_for(@user,:url=>{:action=>'create'},:html=>{:class=>'cmxform'}) do |f| %>
+   
+    <p class="legend">
+        <strong>Note:</strong>
+        Required fields are marked with an asterisk (<em>*</em>)
+    </p>
+    <fieldset>
+        <legend>
+            <%= User %>
+        </legend>
+        <%= f.error_messages %>
+        <div>
+            <label for="name">
+                Name<em>*</em>
+            </label>
+            <%= f.text_field :name %>
+        </div>
+        <div>
+            <label for="email">
+                Email <em>*</em>
+            </label>
+            <%= f.text_field :email %>
+        </div>
+        <div>
+            <label for="password">
+                Password <em>*</em>
+            </label>
+            <%= f.password_field :password %>
+        </div>
+        <div>
+            <label for="password_confirmation">
+                Password Confirmation
+            </label>
+            <%= f.password_field :password_confirmation %>
+        </div>
+        <div>
+            <label for="phone_number">
+                Mobile Number
+            </label>
+            <%= f.text_field :phone_number %>
+        </div>
+        <div>
+            <label for="status">
+                Status
+            </label>
+            <%=f.select :status,User::STATUS_TYPES,:prompt => "-----Select a Status-----" %>
+            <br/>
+        </div>
+        <div>
+            <label for="roles">
+                Roles
+            </label>
+            <% for role in Role.where(:name=>'vle_representative') %>
+            <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+            <%=h role.name %>
+            <% end %>
+        </div>
+        <%= f.fields_for :vle_representative_profile do |profile| %>
+        <div>
+            <label "state_id">
+ State Name
+            </label>
+            <%= profile.collection_select :state_id, State.order('name'), :id, :name ,{:prompt=>'Select State'},{ :onchange=>"#{remote_function(:url=>{:action=>'load_bidding_zones'},:with =>"'id='+value")}" } %>
+        </div>
+        <div>
+            <label for="bidding_zone_id">
+                Bidding Zone Name<em>*</em>
+            </label>
+            <%= profile.collection_select :bidding_zone_id,BiddingZone.all, :id, :name,{:prompt =>'Select Bidding Zone'} %>
+        </div>
+        <div>
+            <label for="district_id">
+                District Name<em>*</em>
+            </label>
+            <%= profile.collection_select :district_id, District.all,:id, :name,{:prompt =>'Select District'} %>
+        </div>
+        <div>
+            <label for="csc_block_id">
+                CSC Name
+            </label>
+            <%= profile.collection_select :csc_block_id, CscBlock.all,:id, :name,{:prompt =>'Select CSC Block'} %>
+        </div>
+        <div>
+            <label for="father_name">
+                Father Name<em>*</em>
+            </label>
+            <%= profile.text_field :father_name %>
+        </div>
+        <div>
+            <label for="address">
+                Address<em>*</em>
+            </label>
+            <%= profile.text_field :address %>
+        </div>
+        <div>
+            <label for="pincode">
+                Pincode<em>*</em>
+            </label>
+            <%= profile.text_field :pincode %>
+        </div>
+        <div>
+            <label for="date_of_birth ">
+                Date Of Birth <em>*</em>
+            </label>
+            <%= profile.date_select:date_of_birth,:start_year => 1940 %>
+        </div>
+        <div>
+            <label for="csc_panchyath ">
+                CSC Panchyath <em>*</em>
+            </label>
+            <%= profile.text_field :csc_panchayat %>
+        </div>
+       
+        <% end %>
+        <div class="buttonrow">
+            <%= f.submit button_name ,:class=>'button' %>
+        </div>
+    </fieldset>
+    <% end %>
+

@@ -1,0 +1,11 @@
+<% for state in @recent_states %>
+<li class="" id="recent_state_<%= state.id%>">
+    <dt>
+        <%=link_to truncate(state.name,:length=>27),admin_state_path(state) %>
+    </dt>
+    <tt>
+        <br/>
+    </tt>
+</li>
+<% end %>
+

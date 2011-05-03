@@ -1,0 +1,10 @@
+<% for insurance_transaction in @recent_insurance_transactions %>
+<li class="" id="recent_insurance_transaction_<%= insurance_transaction.id%>">
+    <dt>   
+		<%=link_to truncate(insurance_transaction.company,:length=>27),insurance_transaction_path(insurance_transaction)%>
+    </dt>
+    <tt>
+       <br/>
+    </tt>
+</li>
+<% end %>

@@ -1,0 +1,7 @@
+<%=render :partial=>'form',:locals=>{:button_name=>'Update',:heading=>'Edit BiddingZone'} %>
+<div class="bottom_links">
+    <a href="admin/bidding_zones" class="more">&larr; All Bidding Zones</a>
+    <%= link_to [:admin,@bidding_zone],:class=>'more' do %>
+    Show &uarr; <% end %>
+</div>
+

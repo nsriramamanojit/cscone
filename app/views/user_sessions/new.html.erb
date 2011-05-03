@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <title>CSCONE</title>
+        <%= javascript_include_tag 'jquery.min','jquery-ui.custom.min','rails','application' %>
+        <%= stylesheet_link_tag 'admin_screen','tablesorter','jquery-ui-custom' %>
+        <%= csrf_meta_tag %>
+  </head><body>
+    <div id="header">
+      <div id="welcome">
+        <a href="#about" rel="facebox">About</a> |
+		<a href="#contact" rel="facebox">Contact Us</a>
+		<div id="about" style="display:none;">
+          About Details comes here...
+        </div>
+		<div id="contact" style="display:none;">
+          Contact Details comes here...
+        </div>
+      </div>
+      <h3>
+        <%=link_to 'Cscone',root_path %>
+      </h3>
+    </div>
+    <div class="tabless">
+      <div style="position: relative; left: 0px; top: 0px;" class="standalone" id="standalone">
+	  <%=render :partial=>'admin/import_flash'%>
+
+       <% form_for @user_session, :url =>{:action => "create"} do |f| %>
+          <div class="title">Welcome to  CSCONE</div>
+          <div class="section">
+            <div class="label">Email:</div>
+            <%= f.text_field :email,:size=>30 %>
+            <div class="label"> Password:</div>
+            <%= f.password_field :password,:size=>30 %>
+          </div>
+          <div style="margin-left: 12px;"><%= f.check_box :remember_me %><%= f.label :remember_me %></div>
+          <br>
+          <div class="buttonbar">
+           <%= f.submit "Login" %>
+            or
+            <a href="#">Forgot password?</a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <center>
+      <div id="footer">
+      <center>
+        Powered by <a href="http://www.jasita.com/" onclick="window.open(this.href);return false;">JASITA Consulting</a>
+        © 2011
+        </center>
+      </div>
+
+    </center>
+ </body>
+ </html>
+

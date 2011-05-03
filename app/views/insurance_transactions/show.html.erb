@@ -1,0 +1,35 @@
+<div class="form-container">
+<fieldset>
+<legend><b><%=@insurance_transaction.company %></b></legend>
+<div>
+   <label><b>Policy Number:</b></label>
+ <%=h @insurance_transaction.policy_number %>
+</div>
+<hr/>
+<div>
+   <label><b>Company:</b></label>
+ <%=h @insurance_transaction.company %>
+</div>
+<hr/>
+<div>
+   <label><b>Policy Name:</b></label>
+ <%=h @insurance_transaction.policy_name %>
+</div>
+<hr/>
+<div>
+   <label><b>Premium Amount:</b></label>
+ <%=h @insurance_transaction.premium_amount %>
+</div>
+<hr/>
+<div>
+   <label><b>Remarks:</b></label>
+ <%=h @insurance_transaction.remarks %>
+</div>
+<hr/>
+<%=link_to new_insurance_transaction_path,:class=>'more' do %>
+Create New insurance_transaction Account &rarr;
+<% end %>
+</div>
+
+
+

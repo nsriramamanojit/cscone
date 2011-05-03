@@ -1,0 +1,34 @@
+<div class="form-container">
+<fieldset>
+<legend><b><%=@transaction.bank_name %></b></legend>
+
+
+<div>
+   <label><b>Bank Name:</b></label>
+  <%=h @transaction.bank_name %>
+</div>
+<hr/>
+ 
+<div>
+   <label><b>Account Number:</b></label>
+ <%=h @transaction.account_number %>
+</div>
+<hr/>
+<div>
+   <label><b>Mode Of Transaction:</b></label>
+ <%=h @transaction.mode_of_transaction %>
+</div>
+<hr/>
+
+<div>
+   <label><b>Amount:</b></label>
+ <%=h @transaction.amount %>
+</div>
+<hr/>
+<%=link_to new_transaction_path,:class=>'more' do %>
+Create New Transaction &rarr;
+<% end %>
+</div>
+
+
+

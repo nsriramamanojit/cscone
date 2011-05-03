@@ -1,0 +1,7 @@
+<%=render :partial=>'form',:locals=>{:button_name=>'Update',:heading=>'Edit vle_document'} %>
+<div class="bottom_links">
+    <a href="admin/vle_documents" class="link-button">&larr; All VLE Documents</a>
+    <%= link_to [:admin,@vle_document],:class=>'more' do %>
+    Show &uarr; <% end %>
+</div>
+

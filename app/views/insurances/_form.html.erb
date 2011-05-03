@@ -1,0 +1,53 @@
+<div class="form-container">
+<%= form_for(@insurance) do |form| %>
+ <p class="legend"><strong>Note:</strong> Required fields are marked with an asterisk (<em>*</em>)</p>
+<fieldset>
+<legend><%=heading %></legend>
+
+ <%= form.error_messages %>
+
+<div>
+    <label for="policy_number">Policy Number<em>*</em></label>
+   <%= form.text_field :policy_number %>
+  </div>
+  <div>
+    <label for="name">Name Of Insurance Holder<em>*</em></label>
+   <%= form.text_field :name%>
+  </div>
+    <div>
+    <label for="name">Name Of Insurance Company<em>*</em></label>
+   <%= form.text_field :company_name%>
+  </div>
+    <div>
+    <label for="name">Name Of Policy<em>*</em></label>
+   <%= form.text_field :policy_name%>
+  </div>
+<div>
+    <label for="amount">Amount<em>*</em></label>
+     <%= form.text_field :amount%>
+ 
+
+
+  </div>
+<div>
+    <label for="premium_id">Premium <em>*</em></label>
+  <%= collection_select(:insurance,:premium_id,Premium.order('name'),:id,:name,:prompt=>"Select Premium Type") %>
+  </div>
+  <div>
+    <label for="no_of_years">Number Of Years</label>
+   <%= form.text_field :no_of_years %>
+  </div>
+  
+<div>
+    <label for="remarks">Remarks</label>
+   <%= form.text_field :remarks %>
+  </div>
+ <div><label for="date_of_birth "> Date<em>*</em></label>
+       <%= form.date_select:date,:start_year => 1940 %>
+ </div>
+ <div class="buttonrow">
+    <%= form.submit button_name ,:class=>'button'%>
+  </div>
+  </fieldset>
+<% end %>
+</div>

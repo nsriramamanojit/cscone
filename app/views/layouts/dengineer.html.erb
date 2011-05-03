@@ -1,0 +1,73 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>CSCONE-<%=controller_name.titleize %></title>
+        <%= javascript_include_tag 'prototype','application','rails','controls','effects','dragdrop' %>
+        <%= stylesheet_link_tag 'admin_screen','tablesorter','jquery-ui-custom' %>
+        <%= csrf_meta_tag %>
+        <script>
+            $(function(){
+                $("#accordion").accordion({
+                    collapsible: true,
+                    autoHeight: false,
+                    navigation: true
+                });
+            });
+
+        </script>
+
+    </head>
+    <body id="store">
+        <div id="header">
+            <div id="welcome">
+                Welcome,<span id="welcome_username"><%=current_user.name %></span>
+                <span>!&nbsp;&nbsp;</span>
+                | <%=link_to 'Profile',:controller=>'/district_engineers',:action=>'edit_profile',:id=>current_user.id %>
+                |  <%=link_to 'Logout',logout_path %>
+            </div>
+            <h3><%=link_to 'CSCONE',root_url %>
+            </h3>
+
+        </div>
+        <div id="tabs">
+            <ul>
+                <%= dengineer_tabs %>
+            </ul>
+        </div>
+<table class="tabbed" height="100%" width="100%" cellspacing="0" cellpadding="0">
+    <tr>
+        <!-- Start: SIDE BAR -->
+        <td id="sidebar" class="sidebar" valign="top">
+            </div>
+            <div class='panel'>
+                <div id='accordion'>
+                    <h3><a href="#"><%=controller_name.titleize %></a></h3>
+                    <div id='recently'>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <!-- END: SIDE BAR -->
+        <td id='main' class='main' valign='top'>
+        
+            <div class='title_tools'>
+            </div>
+            <div class='title'>
+                <span><%=controller_name.titleize %></span>
+                <img alt='Loading' id='loading' src='/images/loading.gif' style='display: none;' width='16' height='16'/>
+            </div>
+            <div id='options' class='remote' style='display: none;'>
+            </div>
+            <div id="create_#{controller_name.singularize}" class='remote' style='display: none;'>
+            </div>
+            <div id='flash' style='display: none;'>
+            
+            </div>
+            
+            <%=render :partial=>'common/import_flash' %>
+            <%=yield %>
+        </td>
+    </tr>
+</table>
+<%=render :partial=>'common/footer' %>
+

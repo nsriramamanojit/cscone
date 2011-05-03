@@ -1,0 +1,21 @@
+<h1>Listing admin_insurance_premias</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @admin_insurance_premias.each do |admin_insurance_premium| %>
+  <tr>
+    <td><%= link_to 'Show', admin_insurance_premium %></td>
+    <td><%= link_to 'Edit', edit_admin_insurance_premium_path(admin_insurance_premium) %></td>
+    <td><%= link_to 'Destroy', admin_insurance_premium, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Insurance premium', new_admin_insurance_premium_path %>

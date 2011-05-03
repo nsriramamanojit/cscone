@@ -1,0 +1,7 @@
+<%=render :partial=>'form',:locals=>{:button_name=>'Update',:heading=>'Edit Bank'}%>
+<div class="bottom_links">
+<a href="@transactions" class="more">&larr; All Transactions</a>
+  <%= link_to @transaction,:class=>'more' do %>
+  Show Profile &uarr; 
+ <% end %>
+</div>

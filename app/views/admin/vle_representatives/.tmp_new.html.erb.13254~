@@ -1,0 +1,5 @@
+<%=render :partial=>'form',:locals=>{:button_name=>'Create',:heading=>'Create vle_representative'} %>
+<div class="bottom_links">
+    <a href="/admin/vle_representatives" class="link-button">&larr; List All vle_representatives</a>
+</div>
+

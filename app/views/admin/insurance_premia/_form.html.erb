@@ -1,0 +1,17 @@
+<%= form_for(@admin_insurance_premium) do |f| %>
+  <% if @admin_insurance_premium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_insurance_premium.errors.count, "error") %> prohibited this admin_insurance_premium from being saved:</h2>
+
+      <ul>
+      <% @admin_insurance_premium.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

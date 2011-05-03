@@ -1,0 +1,52 @@
+<div id="banking_list" class="list">
+
+    <%if @bankings.blank? %>
+    <div class="empty">There are no Bank Accounts Yet..!</div>
+    <%else %>
+   
+   
+    <table width="100%">
+        <tr>
+            <td align="left">
+                <h3 align="left"><%=@table_heading ||= 'Bank Accounts' %></h3>
+            </td>
+            <td align="right">
+                <b><i>per page</i></b>
+                <%=per_page %> | <%= page_entries_info @bankings %>
+            </td>
+        </tr>
+    </table>
+    <table class="tablesorter" cellspacing="1">
+        <thead>
+            <tr>
+
+                <th>
+                   <%= sortable ' name of holder' %>
+                </th>
+                <th>
+                <%= sortable 'bank name' %>
+                </th>
+                
+                <th>
+                  Account Type
+                </th>
+                <th>
+                  <%= sortable 'account number' %>
+                </th>
+              
+                <th>
+                  Address
+                </th>
+                 <th>
+                    Action
+                </th>
+        <%=render :partial=>'banking',:collection=>@bankings %>
+    </table>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+    <%= will_paginate @bankings%>
+<% end %>
+
+
+</div>
+

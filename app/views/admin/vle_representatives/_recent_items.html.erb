@@ -1,0 +1,11 @@
+<% for vle_user in @recent_vle_users  %>
+<li class="" id="recent_vle_user_<%= vle_user.id%>">
+    <dt>
+        <%=link_to truncate(vle_user.name,:length=>27),admin_vle_representative_path(vle_user) %>
+    </dt>
+    <tt>
+        <br/>
+    </tt>
+</li>
+<% end %>
+

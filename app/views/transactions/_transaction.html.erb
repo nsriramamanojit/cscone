@@ -1,0 +1,12 @@
+<%content_tag_for(:tr,transaction) do -%>
+<td><%=h transaction.account_number %></td>
+<td><%=link_to(highlight(transaction.bank_name,params[:search]),transaction_path(transaction)) %></td>
+<td><%=h transaction.mode_of_transaction%></td>
+<td><%=h transaction.amount%></td>
+ <td>
+  <%= link_to 'Edit', edit_transaction_path(transaction) %> |
+ <%= link_to 'Destroy', transaction, :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to 'Show', transaction %>
+</td>
+<% end %>
+

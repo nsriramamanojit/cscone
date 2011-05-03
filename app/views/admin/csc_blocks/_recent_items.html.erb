@@ -1,0 +1,11 @@
+<% for csc_block in @recent_csc_blocks %>
+<li class="" id="recent_csc_block_<%= csc_block.id%>">
+    <dt>
+        <%=link_to truncate(csc_block.name,:length=>27),admin_csc_block_path(csc_block) %>
+    </dt>
+    <tt>
+        <br/>
+    </tt>
+</li>
+<% end %>
+

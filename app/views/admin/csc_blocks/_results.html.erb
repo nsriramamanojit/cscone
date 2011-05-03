@@ -1,0 +1,50 @@
+<div id="csc_block_list" class="list">
+    <%if @csc_blocks.blank? %>
+    <div class="empty">There are no csc_blocks yet..!</div>
+    <%else %>
+    <table width="100%">
+        <tr>
+            <td align="left">
+                <h3 align="left"><%=@table_heading ||= 'Listing CSC Blocks' %></h3>
+            </td>
+            <td align="right">
+                <b><i>per page</i></b>
+                <%=per_page %> | <%= page_entries_info @csc_blocks %>
+            </td>
+        </tr>
+    </table>
+    <table class="tablesorter" cellspacing="1">
+        <thead>
+            <tr>
+
+                <th>
+                    <%= sortable 'name' %>
+                </th>
+                <th>
+                 <%= sortable 'state name' %>
+                </th>
+                <th>
+                 <%= sortable 'bidding zone name' %>
+                </th>
+                <th>
+               <%= sortable 'district name' %>
+                </th>
+
+                <th>
+                    <%= sortable 'description' %>
+                </th>
+               <th><%= sortable "created_by" %></th>
+		<th><%= sortable "created_at" %></th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <%=render :partial=>'csc_block',:collection=>@csc_blocks %>
+    </table>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+    <%= will_paginate @csc_blocks %>
+    <% end %>
+</div>
+

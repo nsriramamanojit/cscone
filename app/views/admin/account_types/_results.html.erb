@@ -1,0 +1,43 @@
+<div id="account_type_list" class="list">
+    <%if @account_types.blank? %>
+    <div class="empty">There are no Account Types yet..!</div>
+    <%else %>
+    <table width="100%">
+        <tr>
+            <td align="left">
+                <h3 align="left"><%=@table_heading ||= 'Listing Account Types' %></h3>
+            </td>
+            <td align="right">
+                <b><i>per page</i></b>
+                <%=per_page %> | <%= page_entries_info @account_types %>
+            </td>
+        </tr>
+    </table>
+    <table class="tablesorter" cellspacing="1">
+        <thead>
+            <tr>
+
+                <th>
+                   Name
+                </th>
+
+                
+                <th>
+                    Created By
+                </th>
+                <th>
+                   Created At
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+        </thead>
+        <%=render :partial=>'account_type',:collection=>@account_types %>
+    </table>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+    <%= will_paginate @account_types %>
+    <% end %>
+</div>
+

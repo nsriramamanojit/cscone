@@ -1,0 +1,11 @@
+<% for premium in   @recent_premia %>
+<li class="" id="recent_premium_<%= premium.id%>">
+    <dt>
+        <%=link_to truncate(premium.name,:length=>27),admin_premium_path(premium) %>
+    </dt>
+    <tt>
+        <br/>
+    </tt>
+</li>
+<% end %>
+

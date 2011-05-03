@@ -1,0 +1,7 @@
+<%=render :partial=>'form',:locals=>{:button_name=>'Update',:heading=>'Edit csc_block'} %>
+<div class="bottom_links">
+    <a href="admin/csc_blocks" class="more">&larr; All CSC Blocks</a>
+    <%= link_to [:admin,@csc_block],:class=>'more' do %>
+    Show &uarr; <% end %>
+</div>
+

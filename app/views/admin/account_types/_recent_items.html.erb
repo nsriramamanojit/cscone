@@ -1,0 +1,11 @@
+<% for account_type in @recent_account_types %>
+<li class="" id="recent_account_type_<%= account_type.id%>">
+    <dt>
+        <%=link_to truncate(account_type.name,:length=>27),admin_account_type_path(account_type) %>
+    </dt>
+    <tt>
+        <br/>
+    </tt>
+</li>
+<% end %>
+

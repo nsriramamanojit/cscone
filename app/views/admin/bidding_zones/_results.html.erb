@@ -1,0 +1,43 @@
+<div id="state_list" class="list">
+    <%if @bidding_zones.blank? %>
+    <div class="empty">There are No Bidding Zones yet..!</div>
+    <%else %>
+    <table width="100%">
+        <tr>
+            <td align="left">
+                <h3 align="left"><%=@table_heading ||= 'Listing Bidding Zones' %></h3>
+            </td>
+            <td align="right">
+                <b><i>per page</i></b>
+                <%=per_page %> | <%= page_entries_info @bidding_zones %>
+            </td>
+        </tr>
+    </table>
+    <table class="tablesorter" cellspacing="1">
+        <thead>
+            <tr>
+
+                <th>
+                   <%= sortable 'name' %>
+                </th>
+                <th>
+               <%= sortable 'StateName' %>
+                </th>
+                <th>
+                <%= sortable 'Description' %>
+                </th>
+               <th><%= sortable "created_by" %></th>
+		<th><%= sortable "created_at" %></th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <%=render :partial=>'bidding_zone',:collection=>@bidding_zones %>
+    </table>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+    <%= will_paginate @bidding_zones %>
+    <% end %>
+</div>
+

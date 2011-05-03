@@ -1,0 +1,7 @@
+<%=render :partial=>'form',:locals=>{:button_name=>'Update',:heading=>'Edit State'} %>
+<div class="bottom_links">
+    <a href="admin/states" class="more">&larr; All States</a>
+    <%= link_to [:admin,@state],:class=>'more' do %>
+    Show &uarr; <% end %>
+</div>
+

@@ -1,0 +1,199 @@
+
+/** added by Upender*/
+.pagination {
+    float: right;
+    font-size: 12px;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+.pagination a, .pagination span {
+    padding: .1em .3em;
+    display: block;
+    float: left;
+    margin: 0px 2px 0px 0px;
+    color: #000;
+}
+
+.pagination span.disabled {
+    color: #000;
+}
+
+.pagination span.current {
+    font-weight: bold;
+    color: #EE6208;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #000;
+}
+
+.pagination a:hover, .pagination a:focus {
+    color: #EE6208;
+}
+
+div.auto_complete {
+    font-family: arial, verdana;
+    font-size: 11px;
+    background: white;
+    border-left: 1px solid silver;
+    border-right: 1px solid silver;
+    border-bottom: 1px solid silver;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    z-index: 100;
+}
+
+div.auto_complete ul {
+    border: 1px solid #BADDEE;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    background-color: #FFF;
+}
+
+div.auto_complete ul li {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-bottom: 1px solid #BADDEE;
+    border-right: 2px solid #BADDEE;
+    color: #3f3f3f;
+    cursor: pointer;
+    display: block;
+    list-style-type: none;
+    margin: 0px;
+    padding: 2px;
+    background-color: #FFF;
+    width: 100%;
+    margin-top: 2px;
+}
+
+div.auto_complete ul li .highlight {
+    background-color: #FFF;
+    width: 100%;
+}
+
+div.auto_complete ul li.selected {
+    background: royalblue;
+    width: 100%;
+    color: white;
+}
+
+div.auto_complete ul li.selected .highlight {
+    background: royalblue;
+    width: 100%;
+}
+
+.flash_error, .flash_notice, .flash_success, .warning {
+    padding: 5px 8px;
+    margin-bottom: 1em;
+  /*  margin-top: 1em;*/
+    border: 1px solid #CCCCCC;
+    font-size: 0.9em;
+    padding-left: 27px;
+}
+
+.flash_error {
+    background: url("/images/flash/form-ic-error.png") no-repeat scroll 5px 4px #FAD0D0;
+    border-color: #F6ABAB;
+    color: #B01717;
+}
+
+.flash_notice {
+    background: url("/images/flash/form-ic-info.png") no-repeat scroll 5px 4px #D1ECF7;
+    border-color: #BCDFEF;
+    color: #11689E;
+}
+
+.flash_success {
+    background: url("/images/flash/form-ic-success.png") no-repeat scroll 5px 4px #E5F8CE;
+    border-color: #D0F1A6;
+    color: #62B548;
+}
+
+.flash_warning {
+    background: url("/images/flash/form-ic-warning.png") no-repeat scroll 5px 4px #FFF6BF;
+    border-color: #FCEB77;
+    color: #957210;
+}
+
+.flash_error a {
+    color: #8a1f11;
+}
+
+.flash_notice a {
+    color: #514721;
+}
+
+.flash_success a {
+    color: #264409;
+}
+
+.flash_warning a {
+    color: #957210;
+}
+
+/*
+ * Scaffold css for erro explanantion(to display error messages when from submission is fials)
+ * */
+#errorExplanation {
+    font-family: Arial;
+    background-color: seashell;
+    border: 2px solid salmon;
+    font-size: 12px;
+    padding:6px;
+    
+}
+
+#errorExplanation h2 {
+    background: salmon;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    margin: -8px;
+    padding: 4px;
+}
+
+#errorExplanation p {
+    color: #333;
+    margin-bottom: 0;
+    padding: 8px;
+    font-weight: bold;
+}
+
+#errorExplanation ul {
+    margin-left: 30px;
+}
+
+#errorExplanation ul li {
+    border: none;
+    font-size: 14px;
+    list-style-type: disc;
+    padding: 0px;
+}
+
+/*
+ .fieldWithErrors input {
+ border-bottom: 1px solid lightpink;
+ border-right: 1px solid lightpink;
+ background: pink; }
+ 
+ .fieldWithErrors select {
+ border-bottom: 1px solid lightpink;
+ border-right: 1px solid lightpink;
+ background: pink; }
+ 
+ .fieldWithErrors textarea {
+ border-bottom: 1px solid lightpink;
+ border-right: 1px solid lightpink;
+ background: pink; }
+ 
+ 
+ */
+.formError {
+    color: red;
+    padding: 5px 15px 4px 12px;
+    vertical-align: top;
+}

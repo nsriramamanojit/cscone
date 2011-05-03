@@ -1,0 +1,95 @@
+<div class="form-container">
+  <fieldset>
+        <legend>
+            <b><%= @vle.user.name %></b>
+        </legend>
+        <div>
+            <label>
+                <b>Name:</b>
+            </label>
+            <%=h @vle.user.name%>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Email:</b>
+            </label>
+            <%=h @vle.user.email%>
+        </div>
+        <hr/>
+         <div>
+            <label>
+                <b>State:</b>
+            </label>
+            <%=h @vle.state.name %>
+        </div>
+        <hr/>
+         <div>
+            <label>
+                <b>Bidding Zone:</b>
+            </label>
+          <%=h @vle.bidding_zone.name %>
+        </div>
+        <hr/>
+         <div>
+            <label>
+                <b>District:</b>
+            </label>
+            <%=h @vle.district.name %>
+        </div>
+        <hr/>
+         <div>
+            <label>
+                <b>CSC Block:</b>
+            </label>
+           <%=h @vle.csc_block.name %>
+        </div>
+        <hr/>
+         <div>
+            <label>
+                <b>Phone Number:</b>
+            </label>
+            <%=h @vle.user.phone_number %>
+        </div>
+        <hr/>
+         <div>
+            <label>
+                <b>Father Name:</b>
+            </label>
+            <%=h @vle.father_name %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Address:</b>
+            </label>
+            <%=h @vle.address %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Pincode:</b>
+            </label>
+            <%=h @vle.pincode %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Date Of Birth:</b>
+            </label>
+            <%=h @vle.date_of_birth %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>CSC Panchyath:</b>
+            </label>
+            <%=h @vle.csc_panchayat %>
+        </div>
+        <hr/>
+ </div>
+<div class="bottom_links">
+    <a href="/district_managers/vle_profile" class="more"> All VLE Representatives</a>
+</div>
+
+

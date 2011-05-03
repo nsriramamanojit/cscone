@@ -1,0 +1,67 @@
+<div id="vle_document_list" class="list">
+    <%if @vle_documents.blank? %>
+    <div class="empty">There are no VLE Documents yet..!</div>
+    <%else %>
+    <table width="100%">
+        <tr>
+            <td align="left">
+                <h3 align="left"><%=@table_heading ||= 'Listing VLE Documents' %></h3>
+            </td>
+            <td align="right">
+                <b><i>per page</i></b>
+                <%=per_page %> | <%= page_entries_info @vle_documents %>
+            </td>
+        </tr>
+    </table>
+    <table class="tablesorter" cellspacing="1">
+        <thead>
+            <tr>
+                 <th><%= sortable "agreement paper" %></th>
+		  <th><%= sortable "representative name" %></th>
+		   <th>
+                  Address Proof
+                 </th>
+                <th>
+                Education Proof
+                </th>
+
+                <th>
+                     Photograph Proof
+                </th>
+                <th>
+                 DD Number
+                </th>
+                <th>
+                    DD Date
+                </th>
+              <th>
+                    DD Bank Name
+                </th>
+                <th>
+                    DD Branch Name
+                </th>
+
+               <th>
+                  DD Amount
+                </th>
+
+
+                <th>
+                    Created By
+                </th>
+                <th>
+                   Created At
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+        </thead>
+        <%=render :partial=>'vle_document',:collection=>@vle_documents %>
+    </table>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+    <%= will_paginate @vle_documents %>
+    <% end %>
+</div>
+

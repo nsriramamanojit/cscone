@@ -1,0 +1,52 @@
+<div id="insurance_list" class="list">
+
+    <%if @insurances.blank? %>
+    <div class="empty">There are no Insurance Accounts Yet..!</div>
+    <%else %>
+   
+   
+    <table width="100%">
+        <tr>
+            <td align="left">
+                <h3 align="left"><%=@table_heading ||= 'Insurances ' %></h3>
+            </td>
+            <td align="right">
+                <b><i>per page</i></b>
+                <%=per_page %> | <%= page_entries_info @insurances %>
+            </td>
+        </tr>
+    </table>
+    <table class="tablesorter" cellspacing="1">
+        <thead>
+            <tr>
+
+                <th>
+                   <%= sortable ' name ' %>
+                </th>
+                <th>
+                <%= sortable 'Policy Number' %>
+                </th>
+                
+                <th>
+                  Premium Type
+                </th>
+                <th>
+                  Amount
+                </th>
+              
+                <th>
+                  Remarks
+                </th>
+                 <th>
+                    Action
+                </th>   
+        <%=render :partial=>'insurance',:collection=>@insurances %>
+    </table>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+    <%= will_paginate @insurances%>
+<% end %>
+
+
+</div>
+

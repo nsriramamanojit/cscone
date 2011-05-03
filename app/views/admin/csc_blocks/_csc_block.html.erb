@@ -1,0 +1,32 @@
+<%content_tag_for(:tr,csc_block) do -%>
+<td>
+    <%=link_to(highlight(csc_block.name,params[:search]),admin_csc_block_path(csc_block)) %>
+</td>
+<td>
+    <%=h csc_block.state.name %>
+</td>
+<td>
+    <%=h csc_block.bidding_zone.name %>
+</td>
+<td>
+    <%=h csc_block.district.name %>
+</td>
+<td>
+    <%=h csc_block.description %>
+</td>
+<td>
+    <%=h @created_name %>
+</td>
+
+<td>
+    <%=h csc_block.created_at.strftime('%d-%m-%Y %H:%M:%S') %>
+</td>
+<td>
+
+    <%= link_to 'Edit', edit_admin_csc_block_path(csc_block) %> |
+
+    <%= link_to 'Destroy', [:admin,csc_block], :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to 'Show', [:admin,csc_block] %>
+</td>
+<% end %>
+

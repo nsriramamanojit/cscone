@@ -1,0 +1,41 @@
+<div class="form-container">
+    <fieldset>
+        <legend>
+            <b><%= @account_type.name %></b>
+        </legend>
+        <div>
+            <label>
+                <b>Name:</b>
+            </label>
+            <%=h @account_type.name %>
+        </div>
+        <hr/>
+       
+        <div>
+            <label>
+                <b>Created by:</b>
+            </label>
+            <%= User.find(@account_type.created_by).name %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Created At:</b>
+            </label>
+            <%= @account_type.created_at.strftime('%d-%m-%Y %H:%M:%S') %>
+        </div>
+        
+    </fieldset>
+</div>
+<div class="bottom_links">
+    <a href="/admin/account_types" class="more">&larr; All Account Types</a>
+    &nbsp;&nbsp;
+    <%= link_to edit_admin_account_type_path(@account_type),:class=>'more' do %>
+    Edit &uarr;
+    <% end %>
+    &nbsp;&nbsp;
+    <%=link_to new_admin_account_type_path,:class=>'more' do %>
+    Create New account_type &rarr;
+    <% end %>
+</div>
+

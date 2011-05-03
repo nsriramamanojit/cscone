@@ -1,0 +1,42 @@
+<div class="form-container">
+<fieldset>
+<legend><b><%=@banking.name_of_holder %></b></legend>
+
+<div>
+   <label><b>Name Of Holder:</b></label>
+  <%=h @banking.name_of_holder %>
+</div>
+<hr/>
+<div>
+   <label><b>Bank Name:</b></label>
+  <%=h @banking.bank_name %>
+</div>
+<hr/>
+ 
+<div>
+   <label><b>Account Number:</b></label>
+ <%=h @banking.account_number %>
+</div>
+<hr/>
+<div>
+   <label><b>Account Type:</b></label>
+ <%=h @banking.account_type.name %>
+</div>
+<hr/>
+<div>
+   <label><b>Father Name:</b></label>
+ <%=h @banking.father_name %>
+</div>
+<hr/>
+<div>
+   <label><b>Address:</b></label>
+ <%=h @banking.address %>
+</div>
+<hr/>
+<%=link_to new_banking_path,:class=>'more' do %>
+Create New Bank Account &rarr;
+<% end %>
+</div>
+
+
+

@@ -1,0 +1,109 @@
+<div class="form-container">
+  <fieldset>
+        <legend>
+            <b><%= @vle_user.name %></b>
+        </legend>
+        <div>
+            <label>
+                <b>Name:</b>
+            </label>
+            <%=h @vle_user.name%>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Email:</b>
+            </label>
+            <%=h @vle_user.email%>
+        </div>
+        <hr/>
+         <div>
+            <label>
+                <b>State:</b>
+            </label>
+            <%=h @vle_user.vle_representative_profile.state.name %>
+        </div>
+        <hr/>
+         <div>
+            <label>
+                <b>Bidding Zone:</b>
+            </label>
+          <%=h @vle_user.vle_representative_profile.bidding_zone.name %>
+        </div>
+        <hr/>
+         <div>
+            <label>
+                <b>District:</b>
+            </label>
+            <%=h @vle_user.vle_representative_profile.district.name %>
+        </div>
+        <hr/>
+         <div>
+            <label>
+                <b>CSC Block:</b>
+            </label>
+           <%=h @vle_user.vle_representative_profile.csc_block.name %>
+        </div>
+        <hr/>
+         <div>
+            <label>
+                <b>Phone Number:</b>
+            </label>
+            <%=h @vle_user.phone_number %>
+        </div>
+        <hr/>
+         <div>
+            <label>
+                <b>Father Name:</b>
+            </label>
+            <%=h @vle_user.vle_representative_profile.father_name %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Address:</b>
+            </label>
+            <%=h @vle_user.vle_representative_profile.address %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Pincode:</b>
+            </label>
+            <%=h @vle_user.vle_representative_profile.pincode %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Date Of Birth:</b>
+            </label>
+            <%=h @vle_user.vle_representative_profile.date_of_birth %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>CSC Panchyath:</b>
+            </label>
+            <%=h @vle_user.vle_representative_profile.csc_panchayat %>
+        </div>
+        <hr/>
+         <div>
+            <label>
+                <b>Created by:</b>
+            </label>
+            <%= User.find(@vle_user.created_by).name %>
+        </div>
+        <hr/>
+<div class="bottom_links">
+    <a href="/admin/vle_representatives" class="more">&larr; All VLE Representatives</a>
+    &nbsp;&nbsp;
+    <%= link_to edit_admin_vle_representative_path(@vle_representative),:class=>'more' do %>
+    Edit &uarr;
+    <% end %>
+    &nbsp;&nbsp;
+    <%=link_to new_admin_vle_representative_path,:class=>'more' do %>
+    Create New VLE Representative &rarr;
+
+    <% end %>
+</div>
+

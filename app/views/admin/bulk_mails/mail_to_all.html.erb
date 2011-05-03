@@ -1,0 +1,11 @@
+<div class="form-container">
+<fieldset><legend>Bulk Mailing </legend>
+<%= form_tag(:action=>'vle_mailing') do %>
+<div> <label for="name"> From: </label><%=  text_field_tag 'name' %></div>
+<div><label for="name"> To: </label><%=  text_field_tag 'name' %></div>
+<div><label for="name"> Text: </label><%=  text_area_tag 'name' %></div>
+<div class="buttonrow">
+<%=submit_tag 'send' ,:class=>'button' %></div>
+<% end %>
+</fieldset>
+</div>

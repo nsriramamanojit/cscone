@@ -1,0 +1,34 @@
+<h1 align="center"> CSCONE </h1>
+<hr>
+<h2 align="center">Bank Accounts Report</h2>
+<br>
+<table cellspacing="1" border = '1'>
+	<thead>
+	<tr>
+	        <th>Name</th>		
+		<th>Email</th>	
+                <th>Zone</th>
+                <th>District </th>
+                <th>Block </th>
+		<th>Total Accounts </th>	
+		<th>Amount</th>
+	</tr>
+	</thead>
+    <% for banking in @bankings %>
+  <tr>
+  <td><%=h banking.user.name%></td>
+  <td><%=h banking.user.email%></td>
+  <td><%=h banking.user.vle_representative_profile.bidding_zone.name%></td>
+  <td><%=h banking.user.vle_representative_profile.district.name%></td>
+  <td><%=h banking.user.vle_representative_profile.csc_block.name%></td>
+  <td><%=h banking.records %></td>
+  <td><%=h banking.records * 5 %></td>
+  
+</tr>
+<% end %>
+</table>
+
+
+
+
+

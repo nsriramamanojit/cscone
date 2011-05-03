@@ -1,0 +1,47 @@
+<div class="form-container">
+    <fieldset>
+        <legend>
+            <b><%= @state.name %></b>
+        </legend>
+        <div>
+            <label>
+                <b>Name:</b>
+            </label>
+            <%=h @state.name %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Description:</b>
+            </label>
+            <%=h @state.description %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Created by:</b>
+            </label>
+            <%= User.find(@state.created_by).name %>
+        </div>
+        <hr/>
+        <div>
+            <label>
+                <b>Created At:</b>
+            </label>
+            <%= @state.created_at.strftime('%d-%m-%Y %H:%M:%S') %>
+        </div>
+        
+    </fieldset>
+</div>
+<div class="bottom_links">
+    <a href="/admin/states" class="more">&larr; All States</a>
+    &nbsp;&nbsp;
+    <%= link_to edit_admin_state_path(@state),:class=>'more' do %>
+    Edit &uarr;
+    <% end %>
+    &nbsp;&nbsp;
+    <%=link_to new_admin_state_path,:class=>'more' do %>
+    Create New State &rarr;
+    <% end %>
+</div>
+

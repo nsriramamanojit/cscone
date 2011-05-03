@@ -1,0 +1,11 @@
+<% for vle_document in @recent_vle_documents %>
+<li class="" id="recent_vle_document_<%= vle_document.id%>">
+    <dt>
+        <%=link_to truncate(vle_document.agreement_paper,:length=>27),admin_vle_document_path(vle_document) %>
+    </dt>
+    <tt>
+        <br/>
+    </tt>
+</li>
+<% end %>
+
