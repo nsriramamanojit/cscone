@@ -6,7 +6,7 @@ class  Admin::UsersController < ApplicationController
   before_filter :require_user, :only => [:index,:show, :edit, :update]
   before_filter :recent_users
   def index
-    @users = User.paginate :page => params[:page], :per_page=>10,:order => 'created_at DESC'
+    @users = User.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page =>page,:per_page=>per_page )
   end
   
   def new
@@ -90,6 +90,6 @@ class  Admin::UsersController < ApplicationController
   end
   
   def recent_users
-    @recent_users = User.order('created_at DESC')
+    @recent_users = User.find(:all,:limit=>10,:order=>'created_at DESC')
   end   
 end

@@ -2,19 +2,16 @@
 <td>
     <%=link_to(highlight(account_type.name,params[:search]),admin_account_type_path(account_type)) %>
 </td>
-
 <td>
     <%=h @created_name %>
 </td>
 <td>
-    <%=h account_type.created_at.strftime('%d-%m-%Y %H:%M:%S') %>
+    <%=h account_type.created_at.strftime('%d-%m-%Y') %>
 </td>
 <td>
-
     <%= link_to 'Edit', edit_admin_account_type_path(account_type) %>|
-
-    <%= link_to 'Destroy', [:admin,account_type], :confirm => 'Are you sure?', :method => :delete %>|
-    <%= link_to 'Show', [:admin,account_type] %>
+    <%= link_to 'Delete', [:admin,account_type], :confirm => 'Are you sure?', :method => :delete %>|
+    <%= link_to 'View', [:admin,account_type] %>
 </td>
 <% end %>
 

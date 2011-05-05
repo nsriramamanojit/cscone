@@ -4,8 +4,7 @@ class Admin::AccountTypesController < ApplicationController
   layout 'admin'
   before_filter :require_user
   before_filter :recent_items
-  # GET /admin/AccountTypes
-  # GET /admin/AccountTypes.xml
+
   def index
     @account_types = AccountType.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page =>page,:per_page=>per_page )
 
@@ -15,8 +14,6 @@ class Admin::AccountTypesController < ApplicationController
     end
   end
 
-  # GET /admin/AccountTypes/1
-  # GET /admin/AccountTypes/1.xml
   def show
     @account_type = AccountType.find(params[:id])
 
@@ -26,8 +23,6 @@ class Admin::AccountTypesController < ApplicationController
     end
   end
 
-  # GET /admin/AccountTypes/new
-  # GET /admin/AccountTypes/new.xml
   def new
     @account_type = AccountType.new
 
@@ -37,13 +32,10 @@ class Admin::AccountTypesController < ApplicationController
     end
   end
 
-  # GET /admin/AccountTypes/1/edit
   def edit
     @account_type = AccountType.find(params[:id])
   end
 
-  # POST /admin/AccountTypes
-  # POST /admin/AccountTypes.xml
   def create
     @account_type = AccountType.new(params[:account_type])
      @account_type.created_by = @created_by
@@ -58,8 +50,6 @@ class Admin::AccountTypesController < ApplicationController
     end
   end
 
-  # PUT /admin/AccountTypes/1
-  # PUT /admin/AccountTypes/1.xml
   def update
     @account_type = AccountType.find(params[:id])
      @account_type.updated_by = @updated_by
@@ -74,8 +64,6 @@ class Admin::AccountTypesController < ApplicationController
     end
   end
 
-  # DELETE /admin/AccountTypes/1
-  # DELETE /admin/AccountTypes/1.xml
   def destroy
     @account_type = AccountType.find(params[:id])
     @account_type.destroy

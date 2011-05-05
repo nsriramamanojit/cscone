@@ -16,21 +16,12 @@
     <table class="tablesorter" cellspacing="1">
         <thead>
             <tr>
-
-                <th>
-                   <%= sortable 'name' %>
-                </th>
-                <th>
-               <%= sortable 'StateName' %>
-                </th>
-                <th>
-                <%= sortable 'Description' %>
-                </th>
-               <th><%= sortable "created_by" %></th>
-		<th><%= sortable "created_at" %></th>
-                <th>
-                    Actions
-                </th>
+                <th><%= sortable 'name' %></th>
+                <th>State</th>
+                <th>Description</th>
+                <th><%= sortable "created_by" %></th>
+		        <th><%= sortable "created_at" %></th>
+                <th>Actions</th>
             </tr>
         </thead>
         <%=render :partial=>'bidding_zone',:collection=>@bidding_zones %>

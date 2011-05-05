@@ -1,3 +1,4 @@
+
 <%content_tag_for(:tr,csc_block) do -%>
 <td>
     <%=link_to(highlight(csc_block.name,params[:search]),admin_csc_block_path(csc_block)) %>
@@ -25,8 +26,8 @@
 
     <%= link_to 'Edit', edit_admin_csc_block_path(csc_block) %> |
 
-    <%= link_to 'Destroy', [:admin,csc_block], :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to 'Show', [:admin,csc_block] %>
+    <%= link_to 'Delete', [:admin,csc_block], :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to 'View', [:admin,csc_block] %>
 </td>
 <% end %>
 

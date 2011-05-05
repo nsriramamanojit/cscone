@@ -3,12 +3,6 @@ Cscone::Application.routes.draw do
 #  resources :district_managers
 #  resources :district_engineers
   
-  namespace :admin do resources :bulk_mails do
-  get 'mail_to_all',:on=>:collection
-  get 'mail_to_district',:on=>:collection
-  post 'vle_mailing' , :on=>:collection
-end
- end
 
   resources :insurance_transactions do
   get 'export',:on=>:collection
@@ -177,8 +171,8 @@ end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => "admin/districts#index"
-
+  # root :to => "admin/districts#index"
+  root :to => "user_sessions#new"
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

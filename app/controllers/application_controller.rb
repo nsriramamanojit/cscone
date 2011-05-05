@@ -64,7 +64,7 @@ class ApplicationController < ActionController::Base
     if params[:per_page]
       @per_page = params[:per_page]
     else
-      @per_page = 5
+      @per_page = 20
     end
   end
   def page

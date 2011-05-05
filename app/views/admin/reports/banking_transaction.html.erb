@@ -1,6 +1,6 @@
 <div class="form-container">
   <fieldset>
-<legend>Banking Transaction Reports</legend>
+<legend>Bank Transaction Reports</legend>
 <%= form_tag(:action=>'banking_transaction_report') do %>
 <div> <label for="name">From :</label>
 <%= date_select("report", "start_date", :order => [:day, :month, :year])%>

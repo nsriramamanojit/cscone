@@ -29,32 +29,32 @@ module ApplicationHelper
     elsif current_user.roles.include?(admin) 
       
       html <<  '<li>'
-      html << link_to('New VLE',{:controller=>'vle_representatives',:action=>'new'},:class=>(current_page?(:controller=>'vle_representatives',:action=>'new') ? "vle_representatives selected" : ""))
+      html << link_to('New VLE',{:controller=>'admin/vle_representatives',:action=>'new'},:class=>(current_page?(:controller=>'vle_representatives',:action=>'new') ? "vle_representatives selected" : ""))
       html << '</li>'
       html <<  '<li>'
-      html << link_to('VLE Status',{:controller=>'vle_representatives',:action=>'disable_representative'},:class=>(current_page?(:controller=>'vle_representatives',:action=>'disable_representative') ? "vle_representatives selected" : ""))
+      html << link_to('VLE Status',{:controller=>'admin/users',:action=>'index'},:class=>(current_page?(:controller=>'vle_representatives',:action=>'disable_representative') ? "vle_representatives selected" : ""))
       html << '</li>' 
       html <<  '<li>'
-      html << link_to('VLE Profile',{:controller=>'vle_representatives',:action=>'vle_profile'},:class=>(current_page?(:controller=>'vle_representatives',:action=>'vle_profile') ? "vle_representatives selected" : ""))
+      html << link_to('VLE Profiles',{:controller=>'admin/vle_representatives',:action=>'index'},:class=>(current_page?(:controller=>'vle_representatives',:action=>'vle_profile') ? "vle_representatives selected" : ""))
       html <<  '<li>'
-      html << link_to('VLE Documnets',{:controller=>'vle_representatives',:action=>'vle_document'},:class=>(current_page?(:controller=>'vle_representatives',:action=>'vle_document') ? "vle_representatives selected" : ""))
+      html << link_to('VLE Documnets',{:controller=>'admin/vle_representatives',:action=>'vle_document'},:class=>(current_page?(:controller=>'vle_representatives',:action=>'vle_document') ? "vle_representatives selected" : ""))
       html << '</li>'
       html <<  '<li>'
-      html << link_to('VLE Password Reset',{:controller=>'vle_representatives',:action=>'upload_password'},:class=>(current_page?(:controller=>'vle_representatives',:action=>'upload_password') ? "vle_representatives selected" : ""))
+      html << link_to('VLE Password Reset',{:controller=>'admin/vle_representatives',:action=>'upload_password'},:class=>(current_page?(:controller=>'vle_representatives',:action=>'upload_password') ? "vle_representatives selected" : ""))
       html << '</li>'
       html <<  '<li>'
       
       html <<  '<li>'
       html <<  '<li>'
-      html << link_to('VLE Bulk Mail',{:controller=>'admin/bulk_mails'},:class=>(current_page?(:controller=>'admin/bulk_mails') ? "bulk_mails selected" : ""))
+      html << link_to('VLE Bulk Mail',{:controller=>'/bulk_vle_mails'},:class=>(current_page?(:controller=>'admin/bulk_mails') ? "bulk_mails selected" : ""))
       html << '</li>'    
       
        html <<  '<li>'
-      html << link_to('Upload VLE',{:controller=>'vle_representatives',:action=>'upload'},:class=>(current_page?(:controller=>'vle_representatives',:action=>'upload') ? "vle_representatives selected" : ""))
+      html << link_to('Upload VLE',{:controller=>'admin/vle_representatives',:action=>'upload'},:class=>(current_page?(:controller=>'vle_representatives',:action=>'upload') ? "vle_representatives selected" : ""))
       html << '</li>' 
        html <<  '<li>'
       html << link_to('Account Types',
-{:controller=>'account_types',:action=>'index'},:class=>(current_page?(:controller=>'account_types',:action=>'index') ? "account_types selected" : ""))
+{:controller=>'admin/account_types',:action=>'index'},:class=>(current_page?(:controller=>'account_types',:action=>'index') ? "account_types selected" : ""))
       html << '</li>' 
        html <<  '<li>'
       html << link_to('Premium Types',
@@ -87,7 +87,7 @@ module ApplicationHelper
     def dmanager_tabs
     html = ''
       html << "<li>"
-  html << link_to('VLE Profile',{:controller=>'district_managers',:action=>'vle_profile'},:class=>(current_page?(:controller=>'district_managers',:action=>'vle_profile') ? "district_managers selected" : "")) 
+  html << link_to('VLE Profiles',{:controller=>'district_managers',:action=>'vle_profile'},:class=>(current_page?(:controller=>'district_managers',:action=>'vle_profile') ? "district_managers selected" : "")) 
       html << "</li>"
       html << "<li>"
       html << link_to('Reports',{:controller=>'district_managers',:action=>'reports'},:class=>(controller_name.eql?('transactions') ? "active" : "")) 
@@ -97,7 +97,7 @@ module ApplicationHelper
       def dengineer_tabs
     html = ''
       html << "<li>"
-  html << link_to('VLE Profile',{:controller=>'district_engineers',:action=>'vle_profile'},:class=>(current_page?(:controller=>'district_engineers',:action=>'vle_profile') ? "district_engineers selected" : "")) 
+  html << link_to('VLE Profiles',{:controller=>'district_engineers',:action=>'vle_profile'},:class=>(current_page?(:controller=>'district_engineers',:action=>'vle_profile') ? "district_engineers selected" : "")) 
       html << "</li>"
       html << "<li>"
       html << link_to('Reports',{:controller=>'district_engineers',:action=>'reports'},:class=>(controller_name.eql?('transactions') ? "active" : "")) 
@@ -111,16 +111,16 @@ module ApplicationHelper
     when 'reports' 
       html << "<div class='sub_menu_header' align='top'><ul><div class='sub_menu'>"
       html <<  '<li>'
-      html << link_to('Bankings',{:controller=>'reports',:action=>'banking'},:class=>(current_page?(:controller=>'reports',:action=>'banking') ? "reports selected" : ""))
+      html << link_to('Bank Accounts',{:controller=>'reports',:action=>'banking'},:class=>(current_page?(:controller=>'reports',:action=>'banking') ? "reports selected" : ""))
       html << '</li>' 
       html <<  '<li>'
-      html << link_to('BankingTransaction',{:controller=>'reports',:action=>'banking_transaction'},:class=>(current_page?(:controller=>'reports',:action=>'banking_transaction') ? "reports selected" : ""))
+      html << link_to('Bankin Transactions',{:controller=>'reports',:action=>'banking_transaction'},:class=>(current_page?(:controller=>'reports',:action=>'banking_transaction') ? "reports selected" : ""))
       html << '</li>' 
        html <<  '<li>'
-      html << link_to('Insurances',{:controller=>'reports',:action=>'insurance'},:class=>(current_page?(:controller=>'reports',:action=>'insurance') ? "reports selected" : ""))
+      html << link_to('Insurance Accounts',{:controller=>'reports',:action=>'insurance'},:class=>(current_page?(:controller=>'reports',:action=>'insurance') ? "reports selected" : ""))
       html << '</li>' 
        html <<  '<li>'
-      html << link_to('InsuranceTransactions',{:controller=>'reports',:action=>'insurance_transaction'},:class=>(current_page?(:controller=>'reports',:action=>'insurance_transaction') ? "reports selected" : ""))
+      html << link_to('Insurance Transactions',{:controller=>'reports',:action=>'insurance_transaction'},:class=>(current_page?(:controller=>'reports',:action=>'insurance_transaction') ? "reports selected" : ""))
       html << '</li>' 
       
       html <<  "</div></ul></div><br/>" 
@@ -130,13 +130,13 @@ module ApplicationHelper
    def bulk_sub_menu
     html = ''
     case controller.controller_name
-    when 'bulk_mails' 
+    when 'bulk_vle_mails' 
       html << "<div class='sub_menu_header' align='top'><ul><div class='sub_menu'>"
       html <<  '<li>'
-      html << link_to('All VLEs',{:controller=>'bulk_mails',:action=>'mail_to_all'},:class=>(current_page?(:controller=>'bulk_mails',:action=>'mail_to_all') ? "bulk_mails selected" : ""))
+      html << link_to('All VLEs',{:controller=>'bulk_vle_mails',:action=>'index'},:class=>(current_page?(:controller=>'bulk_mails',:action=>'mail_to_all') ? "bulk_mails selected" : ""))
       html << '</li>' 
       html <<  '<li>'
-      html << link_to('Districts',{:controller=>'bulk_mails',:action=>'mail_to_district'},:class=>(current_page?(:controller=>'reports',:action=>'mail_to_district') ? "bulk_mails selected" : ""))
+      html << link_to('Districts',{:controller=>'bulk_vle_mails',:action=>'district'},:class=>(current_page?(:controller=>'reports',:action=>'mail_to_district') ? "bulk_mails selected" : ""))
       html << '</li>' 
        
       html <<  "</div></ul></div><br/>" 
@@ -147,7 +147,7 @@ module ApplicationHelper
   
   ####### per page to select user
   def per_page
-    select_tag :per_page, options_for_select([5,10,20,30,50,100,200], @per_page.to_i), :onchange => "if(this.value){window.location='?per_page='+this.value+'&page=#{@page}'+'&query=#{@query}'}"
+    select_tag :per_page, options_for_select([20,50,100,200], @per_page.to_i), :onchange => "if(this.value){window.location='?per_page='+this.value+'&page=#{@page}'+'&query=#{@query}'}"
   end
   def sortable(column, title = nil)
     title ||= column.titleize

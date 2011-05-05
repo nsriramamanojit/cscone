@@ -7,14 +7,14 @@
     <%=h @created_name %>
 </td>
 <td>
-    <%=h premium.created_at.strftime('%d-%m-%Y %H:%M:%S') %>
+    <%=h premium.created_at.strftime('%d-%m-%Y') %>
 </td>
 <td>
 
     <%= link_to 'Edit', edit_admin_premium_path(premium) %>|
 
-    <%= link_to 'Destroy', [:admin,premium], :confirm => 'Are you sure?', :method => :delete %>|
-    <%= link_to 'Show', [:admin,premium] %>
+    <%= link_to 'Delete', [:admin,premium], :confirm => 'Are you sure?', :method => :delete %>|
+    <%= link_to 'View', [:admin,premium] %>
 </td>
 <% end %>
 

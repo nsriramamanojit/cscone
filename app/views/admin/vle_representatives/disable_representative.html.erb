@@ -3,8 +3,11 @@
 <b><i> There are No Users yet..!</i></b> 
 <%else%>
 <table width="100%">
-	<tr><td align="left"><h3 align="left"><%=@table_heading ||= 'Listing Users'%></h3></td>
-	   
+	<tr><td align="left"><h3 align="left"><%=@table_heading ||= 'Listing VLE Representatives'%></h3></td>
+           <td align="right">
+                <b><i>per page</i></b>
+                    <%=per_page %> |  <%= page_entries_info @users %>
+            </td>	   
 	</tr>
 </table>
 <table class="tablesorter" cellspacing="1">
@@ -21,16 +24,18 @@
 	<tr>
  <td><%=model_status user %></td>
  <td><%= user.roles[0].name%></td>
- <td> <%= link_to h(user.name), admin_user_path(user) %></td>
+ <td> <%= link_to(highlight(user.name,params[:search]),admin_user_path(user)) %></td>
  <td><%=h user.email %></td>
  <td> <%=link_to_model_status user %> 
  </td> 	
-
 </tr>
 <% end %>
- <% end %>
 
+ <% end %>
 </table>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+     <%= will_paginate @users %>
 </div>
 
 

@@ -1,11 +1,10 @@
 require 'fastercsv'
 class Admin::PremiaController < ApplicationController
- helper_method :sort_column, :sort_direction
+  helper_method :sort_column, :sort_direction
   layout 'admin'
   before_filter :require_user
   before_filter :recent_items
-  # GET /admin/AccountTypes
-  # GET /admin/AccountTypes.xml
+
   def index
     @premia= Premium.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page =>page,:per_page=>per_page )
 
@@ -15,8 +14,7 @@ class Admin::PremiaController < ApplicationController
     end
   end
 
-  # GET /admin/AccountTypes/1
-  # GET /admin/AccountTypes/1.xml
+
   def show
     @premium = Premium.find(params[:id])
 
@@ -26,8 +24,6 @@ class Admin::PremiaController < ApplicationController
     end
   end
 
-  # GET /admin/AccountTypes/new
-  # GET /admin/AccountTypes/new.xml
   def new
     @premium = Premium.new
 
@@ -37,13 +33,10 @@ class Admin::PremiaController < ApplicationController
     end
   end
 
-  # GET /admin/AccountTypes/1/edit
   def edit
     @premium = Premium.find(params[:id])
   end
 
-  # POST /admin/AccountTypes
-  # POST /admin/AccountTypes.xml
   def create
     @premium = Premium.new(params[:premium])
      @premium.created_by = @created_by
@@ -58,8 +51,6 @@ class Admin::PremiaController < ApplicationController
     end
   end
 
-  # PUT /admin/AccountTypes/1
-  # PUT /admin/AccountTypes/1.xml
   def update
     @premium = Premium.find(params[:id])
      @premium.updated_by = @updated_by
@@ -74,8 +65,6 @@ class Admin::PremiaController < ApplicationController
     end
   end
 
-  # DELETE /admin/AccountTypes/1
-  # DELETE /admin/AccountTypes/1.xml
   def destroy
     @premium = Premium.find(params[:id])
     @premium.destroy

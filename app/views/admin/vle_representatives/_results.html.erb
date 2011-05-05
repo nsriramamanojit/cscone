@@ -5,7 +5,7 @@
     <table width="100%">
         <tr>
             <td align="left">
-                <h3 align="left"><%=@table_heading ||= 'Listing VLE Representatives' %></h3>
+                <h3 align="left"><%=@table_heading ||= 'List of  VLE Representatives' %></h3>
             </td>
             <td align="right">
                 <b><i>per page</i></b>
@@ -24,20 +24,17 @@
                <%= sortable 'email' %>
                 </th>
                 <th>
-              <%= sortable 'state name' %>
+              		State
                 </th>
                 <th>
-               <%= sortable 'biddingZoneName' %>
+               <%= sortable 'Zone' %>
                 </th>
 
                 <th>
-                    <%= sortable 'districtname' %>
+                    <%= sortable 'District' %>
                 </th>
                 <th>
-                   <%= sortable 'cscblockname' %>
-                </th>
-                <th>
-                <%= sortable 'father_name' %>
+                   <%= sortable 'Block' %>
                 </th>
                 <th>
                  <%= sortable 'address' %>
@@ -49,19 +46,13 @@
                  <%= sortable 'phone_number' %>
                 </th> 
                 <th>
-                <%= sortable 'date_0f_birth' %>
-                </th> 
-                <th>
-               <%= sortable 'csc_panchyat' %>
+               <%= sortable 'Panchyat' %>
                 </th> 
                 
                 <th>
                 Status
                 </th>
-                <th>
-                    <%= sortable 'created_by' %>
-                </th>
- 
+  
                 <th>
                     Action
                 </th>

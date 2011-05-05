@@ -1,0 +1,9 @@
+<br>
+<%= link_to "Create New Mail", {:action => 'new' }, :class=>'more'%>
+<br/>
+<% if @bulk_vle_mails.blank? %>
+	<p>There are no VLE Mails currently in the system.</p>
+<% else %>
+ 	<p>There are Email currently in the system.</p>
+<% end %>
+

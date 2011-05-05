@@ -1,0 +1,10 @@
+<div class="form-container">
+<fieldset><legend>Bulk Mailing </legend>
+<%= form_tag :action=>'save' %>
+<div> <label for="name"> Subject: </label><%=  text_field_tag 'mail_subject',nil,:size=>70 %></div>
+<div><label for="name"> Message: </label><%=  text_area_tag 'mail_body',nil,:cols=>70, :rows=>10 %></div>
+<div class="buttonrow">
+<%=submit_tag 'send' ,:class=>'button' %></div>
+<%= form_tag %>
+</fieldset>
+</div>

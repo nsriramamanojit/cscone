@@ -126,7 +126,7 @@ Role.create(:name=>'super_admin',:created_at=>Time.now,:updated_at=>Time.now)
 Role.create(:name=>'admin',:created_at=>Time.now,:updated_at=>Time.now)
 Role.create(:name=>'vle_representative',:created_at=>Time.now,:updated_at=>Time.now)
 Role.create(:name=>'dmanager',:created_at=>Time.now,:updated_at=>Time.now)
-Role.create(:name=>'denigneer',:created_at=>Time.now,:updated_at=>Time.now)
+Role.create(:name=>'dengineer',:created_at=>Time.now,:updated_at=>Time.now)
 ########## Assigmments ###############
 Assignment.create(:user_id=>1,:role_id=>1,:created_at=>Time.now,:updated_at=>Time.now)
 Assignment.create(:user_id=>2,:role_id=>2,:created_at=>Time.now,:updated_at=>Time.now)

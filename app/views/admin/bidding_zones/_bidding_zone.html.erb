@@ -13,14 +13,12 @@
     <%=h @created_name %>
 </td>
 <td>
-    <%=h bidding_zone.created_at.strftime('%d-%m-%Y %H:%M:%S') %>
+    <%=h bidding_zone.created_at.strftime('%d-%m-%Y') %>
 </td>
 <td>
-
     <%= link_to 'Edit', edit_admin_bidding_zone_path(bidding_zone) %> |
-
-    <%= link_to 'Destroy', [:admin,bidding_zone], :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to 'Show', [:admin,bidding_zone] %>
+    <%= link_to 'Delete', [:admin,bidding_zone], :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to 'View', [:admin,bidding_zone] %>
 </td>
 <% end %>
 

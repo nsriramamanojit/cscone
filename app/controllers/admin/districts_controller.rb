@@ -5,8 +5,7 @@ class Admin::DistrictsController < ApplicationController
   before_filter :require_user
   before_filter :recent_items
 
-  # GET /admin/districts
-  # GET /admin/districts.xml
+
   def index
     @districts = District.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page =>page,:per_page=>per_page )
 
@@ -16,8 +15,7 @@ class Admin::DistrictsController < ApplicationController
     end
   end
 
-  # GET /admin/districts/1
-  # GET /admin/districts/1.xml
+
   def show
     @district = District.find(params[:id])
 
@@ -27,8 +25,7 @@ class Admin::DistrictsController < ApplicationController
     end
   end
 
-  # GET /admin/districts/new
-  # GET /admin/districts/new.xml
+
   def new
     @district = District.new
 
@@ -38,13 +35,12 @@ class Admin::DistrictsController < ApplicationController
     end
   end
 
-  # GET /admin/districts/1/edit
+
   def edit
     @district = District.find(params[:id])
   end
 
-  # POST /admin/districts
-  # POST /admin/districts.xml
+
   def create
     @district = District.new(params[:district])
     @district.created_by = @created_by
@@ -59,8 +55,7 @@ class Admin::DistrictsController < ApplicationController
     end
   end
 
-  # PUT /admin/districts/1
-  # PUT /admin/districts/1.xml
+
   def update
     @district = District.find(params[:id])
     @district.updated_by = @updated_by
@@ -75,8 +70,7 @@ class Admin::DistrictsController < ApplicationController
     end
   end
 
-  # DELETE /admin/districts/1
-  # DELETE /admin/districts/1.xml
+
   def destroy
     @district = District.find(params[:id])
     @district.destroy
@@ -100,7 +94,8 @@ class Admin::DistrictsController < ApplicationController
     :disposition => "attachment; filename=#{outfile}"
 
   end
- def load_bidding_zones
+ 
+   def load_bidding_zones
 		@bidding_zones = BiddingZone.where(:state_id => params[:id])
 			render :update do |page|
 				page[:district_bidding_zone_id].replace collection_select(:district,:bidding_zone_id, @bidding_zones, :id, :name)

@@ -23,5 +23,12 @@ class User < ActiveRecord::Base
   [ "Blocked" , "Blocked" ]
   ]
 
+     def self.search(search)
+    if search
+      where(:name.matches => "%#{search}%") #from meta_where gem
+    else
+      scoped
+    end
+  end
 end
 

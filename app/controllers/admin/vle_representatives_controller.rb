@@ -1,25 +1,23 @@
 require 'fastercsv'
 require 'csv'
 class Admin::VleRepresentativesController < ApplicationController
+
   helper_method :sort_column, :sort_direction
   layout 'admin'
   before_filter :require_user
   before_filter :recent_items
   
-  # GET /admin/vle_representatives
-  # GET /admin/vle_representatives.xml
+ 
   def index
     role = Role.find_by_name('vle_representative')
-    @vle_users = role.users.order(sort_column + " " + sort_direction).paginate(:page =>page,:per_page=>per_page )
+    @vle_users = role.users.order.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page =>page,:per_page=>per_page )
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @vle_users }
     end
   end
-  #Omprakas Mehta
-  # GET /admin/vle_representatives/1
-  # GET /admin/vle_representatives/1.xml
+
   def show
     @vle_user =  User.find(params[:id])
     
@@ -29,8 +27,7 @@ class Admin::VleRepresentativesController < ApplicationController
     end
   end
   
-  # GET /admin/vle_representatives/new
-  # GET /admin/vle_representatives/new.xml
+
   def new
     @user = User.new
     @user.build_vle_representative_profile
@@ -40,14 +37,13 @@ class Admin::VleRepresentativesController < ApplicationController
     end
   end
   
-  # GET /admin/vle_representatives/1/edit
+
   def edit
     @user = User.find(params[:id])
     # @vle_user.build_vle_representative_profile
   end
   
-  # POST /admin/vle_representatives
-  # POST /admin/vle_representatives.xml
+
   def create
     @user = User.new(params[:user])
     @user.created_by = @created_by
@@ -61,10 +57,7 @@ class Admin::VleRepresentativesController < ApplicationController
       end
     end
   end
-  
-  # PUT /admin/vle_representatives/1
-  # PUT /admin/vle_representatives/1.xml
-  
+    
   def update
     @user = User.find(params[:id])
     @user.updated_by = @updated_by
@@ -90,21 +83,41 @@ class Admin::VleRepresentativesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
   def vle_document
     @vle_documents = VleDocument.all
     #@vle_documents = VleDocument.all
   end
+  
   def vle_profile
     role = Role.find_by_name('vle_representative')
     @vle_users = role.users.order(sort_column + " " + sort_direction).paginate(:page =>page,:per_page=>per_page )
   end
+  
   def disable_representative
       role = Role.find_by_name('vle_representative')
-     @users = role.users
+     @users = role.users.order.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page =>page,:per_page=>per_page )
+#     @users = User.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page =>page,:per_page=>per_page )
+    
    end 
+   
+  def update_status
+    @user = User.find(params[:id])
+    status = @user.status
+    @user.update_attribute('status',params[:status])
+    flash[:success] = "#{@user.name}  has been updated from #{status} to #{@user.status}"
+   
+    respond_to do |format|
+      format.html{redirect_to(admin_users_path) }
+      format.xml  { render :xml => @degree.errors, :status => :unprocessable_entity  }
+    end
+  end
+  
   def update_vle_representative
    puts "#############  #{params[:user_vle_representative_profile_attributes][:user_id]}"
   end
+  
+  
   def reset_password
     @user = User.find(params[:id])
     @user.password= @user.password_confirmation=@user.email
@@ -112,7 +125,7 @@ class Admin::VleRepresentativesController < ApplicationController
       if @user.update_attributes(params[:user])
         
         format.html { redirect_to({:action=>'upload_password',:id=>@user.id
-          }, :notice => 'Vle representative password is  successfully Reset.') }
+          }, :notice => 'VLE Representative password is  successfully Reset.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -121,9 +134,10 @@ class Admin::VleRepresentativesController < ApplicationController
     end
     # @vle_user.build_vle_representative_profile
   end
+  
  def upload_password
   role = Role.find_by_name('vle_representative')
-     @users = role.users
+     @users = role.users.order.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page =>page,:per_page=>per_page )
   end
  
   def csv_import
@@ -162,8 +176,11 @@ class Admin::VleRepresentativesController < ApplicationController
       end
     end
   end
+  
   def upload
   end
+  
+  
   def load_bidding_zones
     @bidding_zones = BiddingZone.where(:state_id => params[:id])
     render :update do |page|
@@ -171,6 +188,7 @@ class Admin::VleRepresentativesController < ApplicationController
       { :onchange=>"#{remote_function(:url=>{:action=>'load_districts'},:with =>"'id='+value")}" })
     end
   end
+  
   def load_districts
     @districts = District.where(:bidding_zone_id => params[:id])
     render :update do |page|
@@ -178,6 +196,7 @@ class Admin::VleRepresentativesController < ApplicationController
       { :onchange=>"#{remote_function(:url=>{:action=>'load_csc_blocks'},:with =>"'id='+value")}" })
     end
   end
+  
   def load_csc_blocks
     @csc_blocks = CscBlock.where(:district_id => params[:id])
     render :update do |page|
@@ -187,14 +206,7 @@ class Admin::VleRepresentativesController < ApplicationController
     end
   end
   
-   #def load_vle_representatives   
-    # @users = User.joins("LEFT OUTER JOIN vle_representative_profiles ON vle_representative_profiles.csc_block_id = #{params[:id]}")
- #   puts "###########-------     #{@users.size}"
-  #  render :update do |page|
-   #   page[:user_vle_representative_profile_attributes_user_id].replace collection_select(:user_vle_representative_profile_attributes,:user_id, @users, :id, :name,{:prompt=>'select User'})
-    #end
- # end
-  
+ 
   def export
     @vle_users = Role.find_by_name('vle_representative').users#User.search(params[:search]).order("name")
     outfile = "vle_representatives" + Time.now.strftime("%d-%m-%Y-%H-%M-%S") + ".csv"
@@ -209,12 +221,14 @@ class Admin::VleRepresentativesController < ApplicationController
     :disposition => "attachment; filename=#{outfile}"
     
   end
+
   def vle_report
-role = Role.find_by_name('vle_representative')
+	role = Role.find_by_name('vle_representative')
     @vle_users = role.users
- @reports = Banking.where(:created_by=>params[:id])
+ 	@reports = Banking.where(:created_by=>params[:id])
 
   end
+  
   def bulk_mailing
    role = Role.find_by_name('vle_representative')
     @vle_users = role.users

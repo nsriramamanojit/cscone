@@ -1,12 +1,11 @@
 require 'fastercsv'
 class Admin::BiddingZonesController < ApplicationController
-     helper_method :sort_column, :sort_direction
+  
+  helper_method :sort_column, :sort_direction
   layout 'admin'
   before_filter :require_user
   before_filter :recent_items
 
-  # GET /admin/bidding_zones
-  # GET /admin/bidding_zones.xml
   def index
    @bidding_zones = BiddingZone.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page =>page,:per_page=>per_page )
 
@@ -16,8 +15,6 @@ class Admin::BiddingZonesController < ApplicationController
     end
   end
 
-  # GET /admin/bidding_zones/1
-  # GET /admin/bidding_zones/1.xml
   def show
     @bidding_zone = BiddingZone.find(params[:id])
 
@@ -27,8 +24,6 @@ class Admin::BiddingZonesController < ApplicationController
     end
   end
 
-  # GET /admin/bidding_zones/new
-  # GET /admin/bidding_zones/new.xml
   def new
     @bidding_zone = BiddingZone.new
 
@@ -38,13 +33,10 @@ class Admin::BiddingZonesController < ApplicationController
     end
   end
 
-  # GET /admin/bidding_zones/1/edit
   def edit
     @bidding_zone= BiddingZone.find(params[:id])
   end
 
-  # POST /admin/bidding_zones
-  # POST /admin/bidding_zones.xml
   def create
     @bidding_zone= BiddingZone.new(params[:bidding_zone])
      @bidding_zone.created_by = @created_by
@@ -60,8 +52,6 @@ class Admin::BiddingZonesController < ApplicationController
     end
   end
 
-  # PUT /admin/bidding_zones/1
-  # PUT /admin/bidding_zones/1.xml
   def update
     @bidding_zone= BiddingZone.find(params[:id])
     @bidding_zone.updated_by = @updated_by
@@ -76,8 +66,6 @@ class Admin::BiddingZonesController < ApplicationController
     end
   end
 
-  # DELETE /admin/bidding_zones/1
-  # DELETE /admin/bidding_zones/1.xml
   def destroy
     @bidding_zone= BiddingZone.find(params[:id])
     @bidding_zone.destroy
@@ -101,6 +89,7 @@ class Admin::BiddingZonesController < ApplicationController
     :disposition => "attachment; filename=#{outfile}"
 
   end
+
  private
 
   def recent_items

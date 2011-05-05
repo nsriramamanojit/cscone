@@ -4,8 +4,7 @@ class Admin::CscBlocksController < ApplicationController
   layout 'admin'
   before_filter :require_user
   before_filter :recent_items
-  # GET /admin/csc_blocks
-  # GET /admin/csc_blocks.xml
+
   def index
     @csc_blocks  = CscBlock.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page =>page,:per_page=>per_page )
     respond_to do |format|
@@ -14,8 +13,6 @@ class Admin::CscBlocksController < ApplicationController
     end
   end
 
-  # GET /admin/csc_blocks/1
-  # GET /admin/csc_blocks/1.xml
   def show
     @csc_block = CscBlock.find(params[:id])
 
@@ -25,8 +22,6 @@ class Admin::CscBlocksController < ApplicationController
     end
   end
 
-  # GET /admin/csc_blocks/new
-  # GET /admin/csc_blocks/new.xml
   def new
     @csc_block = CscBlock.new
 
@@ -36,13 +31,10 @@ class Admin::CscBlocksController < ApplicationController
     end
   end
 
-  # GET /admin/csc_blocks/1/edit
   def edit
     @csc_block = CscBlock.find(params[:id])
   end
 
-  # POST /admin/csc_blocks
-  # POST /admin/csc_blocks.xml
   def create
     @csc_block = CscBlock.new(params[:csc_block])
     @csc_block.created_by = @created_by
@@ -57,8 +49,6 @@ class Admin::CscBlocksController < ApplicationController
     end
   end
 
-  # PUT /admin/csc_blocks/1
-  # PUT /admin/csc_blocks/1.xml
   def update
     @csc_block = CscBlock.find(params[:id])
     @csc_block.updated_by = @updated_by
@@ -73,8 +63,6 @@ class Admin::CscBlocksController < ApplicationController
     end
   end
 
-  # DELETE /admin/csc_blocks/1
-  # DELETE /admin/csc_blocks/1.xml
   def destroy
     @csc_block = CscBlock.find(params[:id])
     @csc_block.destroy
@@ -84,6 +72,7 @@ class Admin::CscBlocksController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
   def export
     @csc_blocks = CscBlock.search(params[:search]).order("name")
     outfile = "csc_blocks" + Time.now.strftime("%d-%m-%Y-%H-%M-%S") + ".csv"
@@ -98,19 +87,21 @@ class Admin::CscBlocksController < ApplicationController
     :disposition => "attachment; filename=#{outfile}"
 
   end
-   def load_bidding_zones
+  
+  def load_bidding_zones
 		@bidding_zones = BiddingZone.where(:state_id => params[:id])
 			render :update do |page|
 				page[:csc_block_bidding_zone_id].replace collection_select(:csc_block,:bidding_zone_id, @bidding_zones, :id, :name,{:prompt=>'Select Bidding Zone'},
 				   { :onchange=>"#{remote_function(:url=>{:action=>'load_districts'},:with =>"'id='+value")}" })
 			end
-	end
+  end
+  
   def load_districts
 		@districts = District.where(:bidding_zone_id => params[:id])
 			render :update do |page|
 				page[:csc_block_district_id].replace collection_select(:csc_block,:district_id, @districts, :id, :name,{:prompt=>'Select District'})
 			end
-	end
+  end
 
   private
 

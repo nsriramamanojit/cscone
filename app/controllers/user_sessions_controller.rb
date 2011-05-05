@@ -19,15 +19,15 @@ class UserSessionsController < ApplicationController
       dengineer = Role.find_by_name('dengineer')
       if user.status == "Approved"
       if user.roles.include?(super_admin) 
-        redirect_back_or_default(root_url)
+        redirect_back_or_default(admin_vle_representatives_path)
       elsif user.roles.include?(admin) 
         redirect_back_or_default(admin_vle_representatives_path)
       elsif user.roles.include?(dmanager)
       	 redirect_to(:controller=>'district_managers',:action=>'index')
       elsif user.roles.include?(dengineer)
-      	redirect_back_or_default(district_engineers_path)
+      	redirect_to(:controller=>'district_engineers',:action=>'index')
       else user.roles.include?(vle_representative)
-        redirect_to(:controller=>'district_engineers',:action=>'index')
+        redirect_to(:controller=>'bankings',:action=>'index')
       end
       
       else

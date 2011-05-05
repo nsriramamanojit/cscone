@@ -8,8 +8,6 @@ class VleRepresentativeProfile < ActiveRecord::Base
   belongs_to :district
   belongs_to :csc_block
   
-  
-  
   #search
   def self.search(search)
     if search
@@ -19,14 +17,12 @@ class VleRepresentativeProfile < ActiveRecord::Base
     end
   end
   
-  #validations
-
- 
-  validates_presence_of :state_id
-  validates_presence_of :bidding_zone_id
-validates_presence_of :bidding_zone_id
-validates_presence_of :district_id
-validates_presence_of :csc_block_id
+	#validations
+	validates_presence_of :state_id
+	validates_presence_of :bidding_zone_id
+	validates_presence_of :bidding_zone_id
+	validates_presence_of :district_id
+	validates_presence_of :csc_block_id
  
 
 end

@@ -1,11 +1,11 @@
 <div id="premium_list" class="list">
     <%if @premia.blank? %>
-    <div class="empty">There are no Account Types yet..!</div>
+    <div class="empty">There are no Premium Types yet..!</div>
     <%else %>
     <table width="100%">
         <tr>
             <td align="left">
-                <h3 align="left"><%=@table_heading ||= 'Listing Account Types' %></h3>
+                <h3 align="left"><%=@table_heading ||= 'Listing Premium Types' %></h3>
             </td>
             <td align="right">
                 <b><i>per page</i></b>
@@ -29,7 +29,7 @@
                    Created At
                 </th>
                 <th>
-                    &nbsp;
+                   Actions
                 </th>
             </tr>
         </thead>

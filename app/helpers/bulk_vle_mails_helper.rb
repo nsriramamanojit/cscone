@@ -1,0 +1,2 @@
+module BulkVleMailsHelper
+end
