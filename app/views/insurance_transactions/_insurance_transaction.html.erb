@@ -1,13 +1,13 @@
 <%content_tag_for(:tr,insurance_transaction) do -%>
-<td><%=link_to(highlight(insurance_transaction.company,params[:search]),insurance_transaction_path(insurance_transaction)) %></td>
- <td><%=h insurance_transaction.policy_number%></td>
+<td><%=link_to insurance_transaction.policy_number, insurance_transaction%></td>
+<td><%=h insurance_transaction.company %></td>
 <td><%=h insurance_transaction.policy_name %></td>
 <td><%=h insurance_transaction.premium_amount %></td>
-<td><%=h insurance_transaction.remarks %></td>
- <td>
-  <%= link_to 'Edit', edit_insurance_transaction_path(insurance_transaction) %> |
- <%= link_to 'Destroy', insurance_transaction, :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to 'Show', insurance_transaction %>
+<td><%=h insurance_transaction.date.strftime("%d-%m-%Y") %></td>
+<td>
+<!--  <%= link_to 'Edit', edit_insurance_transaction_path(insurance_transaction) %> |
+ <%= link_to 'Destroy', insurance_transaction, :confirm => 'Are you sure?', :method => :delete %> | -->
+    <%= link_to 'View', insurance_transaction %>
 </td>
 <% end %>
 

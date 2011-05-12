@@ -44,6 +44,7 @@ class Admin::DistrictsController < ApplicationController
   def create
     @district = District.new(params[:district])
     @district.created_by = @created_by
+    
     respond_to do |format|
       if @district.save
         format.html { redirect_to([:admin,@district], :notice => 'District was successfully created.') }

@@ -1,0 +1,35 @@
+<h2>Receipt - Insurance Transaction </h2>
+<hr>
+<table>
+<tr>
+<td>Policy Number:</td>
+<td><%= @insurance.policy_number %></td>
+</tr>
+
+<tr>
+<td>Policy Name:</td>
+<td><%= @insurance.policy_name %> </td>
+</tr>
+<tr>
+<td>Company Name:</td>
+<td><%= @insurance.company %></td>
+</tr>
+
+<tr>
+<td>Initial Premium:</td>
+<td><%= @insurance.premium_amount %></td>
+</tr>
+<tr>
+<td>Transaction Date</td>
+<td><%= @insurance.date.strftime("%d-%m-%Y") %></td>
+</tr>
+<tr>
+<td>VLE Name</td>
+<td><%= @vle.name %></td>
+</tr>
+
+</table>
+
+
+
+

@@ -9,3 +9,5 @@ gem 'pdfkit'
 #gem "mongrel", '>= 1.2.0.pre2'
 gem 'declarative_authorization'
 gem 'fastercsv'
+gem 'pdfkit'
+

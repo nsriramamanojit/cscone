@@ -1,6 +1,6 @@
 <div class="form-container">
 <fieldset>
-<legend><b><%=@banking.name_of_holder %></b></legend>
+<legend><b><%=@banking.account_number %></b></legend>
 
 <div>
    <label><b>Name Of Holder:</b></label>
@@ -33,10 +33,13 @@
  <%=h @banking.address %>
 </div>
 <hr/>
-<%=link_to new_banking_path,:class=>'more' do %>
-Create New Bank Account &rarr;
-<% end %>
 </div>
-
+<div class="bottom_links">
+    <a href="/bankings" class="more">All Bank Accounts</a>
+    &nbsp;&nbsp;
+    <%=link_to new_banking_path,:class=>'more' do %>
+    Create New Bank Account
+    <% end %>
+</div>
 
 

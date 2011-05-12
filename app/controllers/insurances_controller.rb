@@ -1,11 +1,12 @@
 require 'fastercsv'
 class InsurancesController < ApplicationController
+
   helper_method :sort_column, :sort_direction
-  # GET /Insurances
-  # GET /Insurances.xml
- layout 'common'
+  layout 'common'
+ 
   before_filter :require_user
   before_filter :recent_items
+ 
   def index
   @insurances = Insurance.where(:created_by=>current_user.id).search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page =>page,:per_page=>per_page )
    
@@ -15,8 +16,6 @@ class InsurancesController < ApplicationController
     end
   end
 
-  # GET /Insurances/1
-  # GET /Insurances/1.xml
   def show
     @insurance = Insurance.find(params[:id])
 
@@ -26,8 +25,6 @@ class InsurancesController < ApplicationController
     end
   end
 
-  # GET /Insurances/new
-  # GET /Insurances/new.xml
   def new
     @insurance = Insurance.new
 
@@ -37,17 +34,16 @@ class InsurancesController < ApplicationController
     end
   end
 
-  # GET /Insurances/1/edit
   def edit
     @insurance = Insurance.find(params[:id])
   end
 
-  # POST /Insurances
-  # POST /Insurances.xml
   def create
     @insurance = Insurance.new(params[:insurance])
     @insurance.created_by = @created_by
     @insurance.user_id= @created_by
+    @insurance.date = Time.now.strftime("%Y-%m-%d")
+    
     respond_to do |format|
       if @insurance.save
         format.html { redirect_to(@insurance, :notice => 'Insurance was successfully created.') }
@@ -59,12 +55,11 @@ class InsurancesController < ApplicationController
     end
   end
 
-  # PUT /Insurances/1
-  # PUT /Insurances/1.xml
   def update
     @insurance = Insurance.find(params[:id])
     @insurance.updatesd_by = @updated_by
     @insurance.user_id = @created_by
+    @insurance.date = Time.now.strftime("%Y-%m-%d")
     respond_to do |format|
       if @Insurance.update_attributes(params[:insurance])
         format.html { redirect_to(@Insurance, :notice => 'Insurance was successfully updated.') }
@@ -76,8 +71,6 @@ class InsurancesController < ApplicationController
     end
   end
 
-  # DELETE /Insurances/1
-  # DELETE /Insurances/1.xml
   def destroy
     @insurance = Insurance.find(params[:id])
     @insurance.destroy
@@ -87,6 +80,7 @@ class InsurancesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
    def export
     @insurances = Insurance.search(params[:search]).order("name")
     outfile = "Insurances" + Time.now.strftime("%d-%m-%Y-%H-%M-%S") + ".csv"
@@ -101,6 +95,19 @@ class InsurancesController < ApplicationController
     :disposition => "attachment; filename=#{outfile}"
 
   end
+  
+  def printreceipt
+    @insurance = Insurance.find(params[:id])
+    @vle = User.find(:first, :conditions=>{:id=>@insurance.user_id})
+    puts '%%%%%%%%%%%%%%%'
+    puts @vle.id
+    
+    html = render_to_string :layout => false 
+	kit = PDFKit.new(html)
+	kit.stylesheets << RAILS_ROOT + '/public/stylesheets/styles.css' 
+	send_data(kit.to_pdf, :filename => "Insurance Reciept-#{@insurance.policy_number}.pdf", :type => 'application/pdf')
+  end
+
 private
 
   def recent_items

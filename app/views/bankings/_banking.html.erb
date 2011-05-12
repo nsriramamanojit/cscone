@@ -1,13 +1,13 @@
 <%content_tag_for(:tr,banking) do -%>
-<td><%=link_to(highlight(banking.name_of_holder,params[:search]),banking_path(banking)) %></td>
- <td><%=h banking.bank_name%></td>
-<td><%=h link_to(banking.account_type.name,banking_path(banking)) %></td>
-<td><%=h banking.account_number %></td>
-<td><%=h banking.address %></td>
- <td>
-  <%= link_to 'Edit', edit_banking_path(banking) %> |
- <%= link_to 'Destroy', banking, :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to 'Show', banking %>
+<td><%=link_to banking.account_number, banking%></td>
+<td><%=h banking.bank_name%></td>
+<td><%=h banking.account_type.name %></td>
+<td><%=h banking.name_of_holder %></td>
+<td><%=h banking.date.strftime("%d-%m-%Y") %></td>
+<td>
+<!--  <%= link_to 'Edit', edit_banking_path(banking) %> | -->
+<!-- <%= link_to 'Destroy', banking, :confirm => 'Are you sure?', :method => :delete %> | -->
+<%= link_to 'View', banking %>
 </td>
 <% end %>
 

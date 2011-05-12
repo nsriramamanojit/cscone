@@ -1,8 +1,6 @@
 <div class="form-container">
 <fieldset>
-<legend><b><%=@transaction.bank_name %></b></legend>
-
-
+<legend><b><%=@transaction.account_number %></b></legend>
 <div>
    <label><b>Bank Name:</b></label>
   <%=h @transaction.bank_name %>
@@ -25,10 +23,13 @@
  <%=h @transaction.amount %>
 </div>
 <hr/>
-<%=link_to new_transaction_path,:class=>'more' do %>
-Create New Transaction &rarr;
-<% end %>
 </div>
-
+<div class="bottom_links">
+    <a href="/transactions" class="more">All Bank Transactions</a>
+    &nbsp;&nbsp;
+    <%=link_to new_transaction_path,:class=>'more' do %>
+    Create New Bank Transaction
+    <% end %>
+</div>
 
 

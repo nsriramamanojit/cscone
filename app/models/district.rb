@@ -1,6 +1,8 @@
 class District < ActiveRecord::Base
     belongs_to :bidding_zone
     belongs_to :state
+    belongs_to :bulk_vle_mail
+    
     has_many :vle_representaive_profiles,:dependent=>:destroy
     has_many :csc_blocks,:dependent=>:destroy
      validates :name, :presence => true, :uniqueness => true, :length => { :maximum => 100}

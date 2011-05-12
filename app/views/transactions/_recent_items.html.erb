@@ -1,7 +1,7 @@
 <% for transaction in @recent_transactions %>
 <li class="" id="recent_transaction_<%= transaction.id%>">
     <dt>   
-		<%=link_to truncate(transaction.bank_name,:length=>27),transaction_path(transaction)%>
+		<%=link_to transaction.account_number,transaction_path(transaction)%>
     </dt>
     <tt>
        <br/>

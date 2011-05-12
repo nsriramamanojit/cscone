@@ -1,9 +1,8 @@
 require 'fastercsv'
 class InsuranceTransactionsController < ApplicationController
   helper_method :sort_column, :sort_direction
-  # GET /insurance_transactions
-  # GET /insurance_transactions.xml
- layout 'common'
+  layout 'common'
+
   before_filter :require_user
   before_filter :recent_items
   def index
@@ -12,8 +11,6 @@ class InsuranceTransactionsController < ApplicationController
    
   end
 
-  # GET /insurance_transactions/1
-  # GET /insurance_transactions/1.xml
   def show
     @insurance_transaction = InsuranceTransaction.find(params[:id])
 
@@ -23,8 +20,6 @@ class InsuranceTransactionsController < ApplicationController
     end
   end
  
-  # GET /insurance_transactions/new
-  # GET /insurance_transactions/new.xml
   def new
     @insurance_transaction = InsuranceTransaction.new
 
@@ -34,20 +29,19 @@ class InsuranceTransactionsController < ApplicationController
     end
   end
 
-  # GET /insurance_transactions/1/edit
   def edit
     @insurance_transaction = InsuranceTransaction.find(params[:id])
   end
 
-  # POST /insurance_transactions
-  # POST /insurance_transactions.xml
   def create
     @insurance_transaction = InsuranceTransaction.new(params[:insurance_transaction])
-     @insurance_transaction .created_by = @created_by
-        @insurance_transaction .user_id = @created_by
+    @insurance_transaction.created_by = @created_by
+    @insurance_transaction.user_id = @created_by
+    @insurance_transaction.date = Time.now.strftime("%Y-%m-%d")
+        
     respond_to do |format|
       if @insurance_transaction.save
-        format.html { redirect_to(@insurance_transaction, :notice => 'Bank was successfully created.') }
+        format.html { redirect_to(@insurance_transaction, :notice => 'Insurance Transaction was successfully created.') }
         format.xml  { render :xml => @insurance_transaction, :status => :created, :location => @insurance_transaction }
       else
         format.html { render :action => "new" }
@@ -56,12 +50,12 @@ class InsuranceTransactionsController < ApplicationController
     end
   end
 
-  # PUT /insurance_transactions/1
-  # PUT /insurance_transactions/1.xml
   def update
     @insurance_transaction = InsuranceTransaction.find(params[:id])
-      @insurance_transaction .updated_by = @created_by
-       @insurance_transaction .user_id = @created_by
+    @insurance_transaction.updated_by = @created_by
+    @insurance_transaction.user_id = @created_by
+    @insurance_transaction.date = Time.now.strftime("%Y-%m-%d")
+    
     respond_to do |format|
       if @insurance_transaction.update_attributes(params[:insurance_transaction])
         format.html { redirect_to(@insurance_transaction, :notice => 'Bank was successfully updated.') }
@@ -73,8 +67,6 @@ class InsuranceTransactionsController < ApplicationController
     end
   end
 
-  # DELETE /insurance_transactions/1
-  # DELETE /insurance_transactions/1.xml
   def destroy
     @insurance_transaction = InsuranceTransaction.find(params[:id])
     @insurance_transaction.destroy
@@ -84,6 +76,7 @@ class InsuranceTransactionsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
    def export
     @insurance_transactions = InsuranceTransaction.search(params[:search]).order("company")
     outfile = "insurance_transactions" + Time.now.strftime("%d-%m-%Y-%H-%M-%S") + ".csv"
@@ -98,6 +91,18 @@ class InsuranceTransactionsController < ApplicationController
     :disposition => "attachment; filename=#{outfile}"
 
   end
+
+
+  def printreceipt
+    @insurance = InsuranceTransaction.find(params[:id])
+    @vle = User.find(:first, :conditions=>{:id=>@insurance.user_id})
+
+    
+    html = render_to_string :layout => false 
+	kit = PDFKit.new(html)
+	kit.stylesheets << RAILS_ROOT + '/public/stylesheets/styles.css' 
+	send_data(kit.to_pdf, :filename => "Insurance Transaction Reciept-#{@insurance.policy_number}.pdf", :type => 'application/pdf')
+  end
   private
 
   def recent_items
@@ -105,7 +110,7 @@ class InsuranceTransactionsController < ApplicationController
   end
 
   def sort_column
-    InsuranceTransaction.column_names.include?(params[:sort]) ? params[:sort] : "company"
+    InsuranceTransaction.column_names.include?(params[:sort]) ? params[:sort] : "policy_number"
   end
 
   def sort_direction

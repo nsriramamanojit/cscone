@@ -1,6 +1,6 @@
 <div class="form-container">
 <fieldset>
-<legend><b><%=@insurance_transaction.company %></b></legend>
+<legend><b><%=@insurance_transaction.policy_number %></b></legend>
 <div>
    <label><b>Policy Number:</b></label>
  <%=h @insurance_transaction.policy_number %>
@@ -26,10 +26,16 @@
  <%=h @insurance_transaction.remarks %>
 </div>
 <hr/>
-<%=link_to new_insurance_transaction_path,:class=>'more' do %>
-Create New insurance_transaction Account &rarr;
-<% end %>
 </div>
 
+<div class="bottom_links">
+    <a href="/insurance_transactions" class="more">All Insurance Transactions</a>
+    &nbsp;&nbsp;
+    <%=link_to new_insurance_transaction_path,:class=>'more' do %>
+    Create New Insurane Transaction
+    <% end %>
+        &nbsp;&nbsp;
+    <%= link_to 'Print Receipt', {:controller=>'insurance_transactions', :action=>'printreceipt', :id=>params[:id]}, :class=>'more' %>    
 
+</div>
 

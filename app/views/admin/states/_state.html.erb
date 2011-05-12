@@ -12,11 +12,9 @@
     <%=h state.created_at.strftime('%d-%m-%Y %H:%M:%S') %>
 </td>
 <td>
-
     <%= link_to 'Edit', edit_admin_state_path(state) %> |
-
-    <%= link_to 'Destroy', [:admin,state], :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to 'Show', [:admin,state] %>
+    <%= link_to 'Delete', [:admin,state], :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to 'View', [:admin,state] %>
 </td>
 <% end %>
 

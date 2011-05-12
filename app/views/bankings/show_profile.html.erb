@@ -60,11 +60,11 @@
             <%=h @vle_user.vle_representative_profile.csc_panchayat %>
         </div>
         <hr/>
-        
+</div>
 <div class="bottom_links">
      &nbsp;&nbsp;
-    <%= link_to edit_profile_bankings_path(@banking),:class=>'more' do %>
-    Edit &uarr;
+    <%= link_to :controller=>'/bankings',:action=>'edit_profile',:id=>current_user.id do %>
+    Edit
     <% end %>
  </div>
 

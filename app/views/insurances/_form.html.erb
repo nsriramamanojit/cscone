@@ -7,7 +7,7 @@
  <%= form.error_messages %>
 
 <div>
-    <label for="policy_number">Policy Number<em>*</em></label>
+    <label for="policy_number">Application Number/Ref. No<em>*</em></label>
    <%= form.text_field :policy_number %>
   </div>
   <div>
@@ -23,28 +23,29 @@
    <%= form.text_field :policy_name%>
   </div>
 <div>
-    <label for="amount">Amount<em>*</em></label>
+    <label for="amount">Insured Amount<em>*</em></label>
      <%= form.text_field :amount%>
  
 
 
   </div>
 <div>
-    <label for="premium_id">Premium <em>*</em></label>
+    <label for="premium_id">Premium Type <em>*</em></label>
   <%= collection_select(:insurance,:premium_id,Premium.order('name'),:id,:name,:prompt=>"Select Premium Type") %>
   </div>
   <div>
-    <label for="no_of_years">Number Of Years</label>
+    <label for="Tenure">Tenure</label>
    <%= form.text_field :no_of_years %>
   </div>
-  
+    <div>
+    <label for="no_of_years">Initial Premium Amount</label>
+   <%= form.text_field :pre_amount %>
+  </div>
 <div>
     <label for="remarks">Remarks</label>
-   <%= form.text_field :remarks %>
+   <%= form.text_area :remarks, :col=>10, :rows=>5 %>
   </div>
- <div><label for="date_of_birth "> Date<em>*</em></label>
-       <%= form.date_select:date,:start_year => 1940 %>
- </div>
+
  <div class="buttonrow">
     <%= form.submit button_name ,:class=>'button'%>
   </div>

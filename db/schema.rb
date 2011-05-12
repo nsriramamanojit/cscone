@@ -53,14 +53,6 @@ ActiveRecord::Schema.define(:version => 20110504073539) do
     t.datetime "updated_at"
   end
 
-  create_table "bulk_mails", :force => true do |t|
-    t.text     "mail_subject"
-    t.text     "mail_body"
-    t.integer  "district_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "bulk_vle_mails", :force => true do |t|
     t.text     "mail_subject"
     t.text     "mail_body"
@@ -156,7 +148,7 @@ ActiveRecord::Schema.define(:version => 20110504073539) do
     t.datetime "updated_at"
   end
 
-  add_index "states", ["name"], :name => "name", :unique => true
+  add_index "states", ["name"], :name => "index_states_on_name", :unique => true
 
   create_table "transactions", :force => true do |t|
     t.integer  "user_id",                                            :null => false

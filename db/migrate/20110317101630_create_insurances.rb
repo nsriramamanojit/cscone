@@ -13,6 +13,7 @@ class CreateInsurances < ActiveRecord::Migration
       t.date :date 
       t.integer :created_by
       t.integer :updated_by
+      t.float :pre_amount
       t.timestamps
     end
   end

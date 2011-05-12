@@ -4,6 +4,25 @@
 <% if @bulk_vle_mails.blank? %>
 	<p>There are no VLE Mails currently in the system.</p>
 <% else %>
- 	<p>There are Email currently in the system.</p>
+<table>
+  <tr>
+    <th>SNo</th>
+    <th>Mail Subject</th>
+    <th>Actions</th>
+  </tr>
+<% i = 1 %>
+<% @bulk_vle_mails.each do |c| %>
+  <tr>
+    <td><%= i %></td>
+    <td><%= c.mail_subject %></td>
+    <td><%= link_to 'View',  {:action => 'show', :id => c.id}  %> | 
+        <%= link_to 'Edit', {:action => 'edit', :id => c.id} %>
+       
+        </td>
+  </tr>
+  <% i = i + 1%>
+<% end %>
+
+</table>
 <% end %>
 

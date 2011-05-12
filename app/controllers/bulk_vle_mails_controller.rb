@@ -18,12 +18,13 @@ class BulkVleMailsController < ApplicationController
     respond_to do |format|
       if @bulk_vle_mail.save
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "index" }
       end
     end
  end
  
  def district
+  
  end
  
 end

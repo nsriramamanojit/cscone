@@ -1,16 +1,14 @@
 <div class="form-container">
 <fieldset>
-<legend><b><%=@insurance.name %></b></legend>
-
+<legend><b><%= @insurance.policy_number %></b></legend>
+<div>
+   <label><b>Application/Reference Number:</b></label>
+ <%=h @insurance.policy_number %>
+</div>
+<hr>
 <div>
    <label><b> Name  Of Holder:</b></label>
   <%=h @insurance.name %>
-</div>
-<hr/>
- 
-<div>
-   <label><b>Policy Number:</b></label>
- <%=h @insurance.policy_number %>
 </div>
 <hr/>
 <div>
@@ -29,19 +27,35 @@
 </div>
 <hr/>
 <div>
-   <label><b>Amount:</b></label>
+   <label><b>Insured Amount:</b></label>
  <%=h @insurance.amount %>
+</div>
+<hr/>
+<div>
+   <label><b>Tenure:</b></label>
+ <%=h @insurance.no_of_years %>
+</div>
+<hr/>
+<div>
+   <label><b>Initial Premium:</b></label>
+ <%=h @insurance.pre_amount %>
 </div>
 <hr/>
 <div>
    <label><b>Remarks:</b></label>
  <%=h @insurance.remarks %>
 </div>
-<hr/>
-<%=link_to new_insurance_path,:class=>'more' do %>
-Create New Insurance Account &rarr;
-<% end %>
 </div>
+<div class="bottom_links">
+    <a href="/insurances" class="more">All Insurance Accounts</a>
+    &nbsp;&nbsp;
+    <%=link_to new_insurance_path,:class=>'more' do %>
+    Create New Insurane Account
+    <% end %>
+    &nbsp;&nbsp;
+    <%= link_to 'Print Receipt', {:controller=>'insurances', :action=>'printreceipt', :id=>params[:id]}, :class=>'more' %>    
+</div>
+
 
 
 

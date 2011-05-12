@@ -25,11 +25,9 @@
   
 <div>
     <label for="remarks">Remarks</label>
-   <%= form.text_field :remarks %>
+   <%= form.text_area :remarks, :col=>10, :rows=>5 %>
   </div>
-<div><label for="date_of_birth "> Date<em>*</em></label>
-       <%= form.date_select:date,:start_year => 1940 %>
- </div>
+
  <div class="buttonrow">
     <%= form.submit button_name ,:class=>'button'%>
   </div>

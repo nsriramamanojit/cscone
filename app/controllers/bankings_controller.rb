@@ -1,19 +1,16 @@
 require 'fastercsv'
 class BankingsController < ApplicationController
   helper_method :sort_column, :sort_direction
-  # GET /bankings
-  # GET /bankings.xml
- layout 'common'
+  layout 'common'
+ 
   before_filter :require_user
   before_filter :recent_items
+ 
   def index
-
-  @bankings = Banking.where(:created_by=>current_user.id).search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page =>page,:per_page=>per_page )
+	  @bankings = Banking.where(:created_by=>current_user.id).search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page =>page,:per_page=>per_page )
    
   end
 
-  # GET /bankings/1
-  # GET /bankings/1.xml
   def show
     @banking = Banking.find(params[:id])
 
@@ -22,12 +19,15 @@ class BankingsController < ApplicationController
       format.xml  { render :xml => @banking }
     end
   end
+
   def show_profile
    @vle_user =  User.find(params[:id])
   end
+
   def edit_profile
    @user = User.find(params[:id])
   end
+
   def update_profile
    @vle_user = User.find(params[:id])
     @vle_user.updated_by = @updated_by
@@ -43,8 +43,7 @@ class BankingsController < ApplicationController
       end
     end
   end
-  # GET /bankings/new
-  # GET /bankings/new.xml
+
   def new
     @banking = Banking.new
 
@@ -54,20 +53,19 @@ class BankingsController < ApplicationController
     end
   end
 
-  # GET /bankings/1/edit
   def edit
     @banking = Banking.find(params[:id])
   end
 
-  # POST /bankings
-  # POST /bankings.xml
   def create
     @banking = Banking.new(params[:banking])
-     @banking .created_by = @created_by
-        @banking .user_id = @created_by
+     @banking.created_by = @created_by
+     @banking.user_id = @created_by
+     @banking.date = Time.now.strftime("%Y-%m-%d")
+     
     respond_to do |format|
       if @banking.save
-        format.html { redirect_to(@banking, :notice => 'Bank was successfully created.') }
+        format.html { redirect_to(@banking, :notice => 'Bank Account was successfully created.') }
         format.xml  { render :xml => @banking, :status => :created, :location => @banking }
       else
         format.html { render :action => "new" }
@@ -76,12 +74,12 @@ class BankingsController < ApplicationController
     end
   end
 
-  # PUT /bankings/1
-  # PUT /bankings/1.xml
   def update
     @banking = Banking.find(params[:id])
-      @banking .updated_by = @created_by
-       @banking .user_id = @created_by
+      @banking.updated_by = @created_by
+       @banking.user_id = @created_by
+       @banking.date = Time.now.strftime("%Y-%m-%d")
+
     respond_to do |format|
       if @banking.update_attributes(params[:banking])
         format.html { redirect_to(@banking, :notice => 'Bank was successfully updated.') }
@@ -93,8 +91,6 @@ class BankingsController < ApplicationController
     end
   end
 
-  # DELETE /bankings/1
-  # DELETE /bankings/1.xml
   def destroy
     @banking = Banking.find(params[:id])
     @banking.destroy
@@ -104,7 +100,8 @@ class BankingsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-   def export
+
+  def export
     @bankings = Banking.search(params[:search]).order("bank_name")
     outfile = "bankings" + Time.now.strftime("%d-%m-%Y-%H-%M-%S") + ".csv"
     csv_data = FasterCSV.generate do |csv|
@@ -118,6 +115,8 @@ class BankingsController < ApplicationController
     :disposition => "attachment; filename=#{outfile}"
 
   end
+
+
   private
 
   def recent_items
@@ -125,7 +124,7 @@ class BankingsController < ApplicationController
   end
 
   def sort_column
-    Banking.column_names.include?(params[:sort]) ? params[:sort] : "name_of_holder"
+    Banking.column_names.include?(params[:sort]) ? params[:sort] : "account_number"
   end
 
   def sort_direction

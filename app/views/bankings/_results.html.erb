@@ -3,8 +3,6 @@
     <%if @bankings.blank? %>
     <div class="empty">There are no Bank Accounts Yet..!</div>
     <%else %>
-   
-   
     <table width="100%">
         <tr>
             <td align="left">
@@ -21,21 +19,22 @@
             <tr>
 
                 <th>
-                   <%= sortable ' name of holder' %>
+                <%= sortable 'account number' %>
+                   
                 </th>
                 <th>
-                <%= sortable 'bank name' %>
+                Bank Name
                 </th>
                 
                 <th>
                   Account Type
                 </th>
                 <th>
-                  <%= sortable 'account number' %>
+                  Name of the Holder
                 </th>
               
                 <th>
-                  Address
+                  Transaction Date
                 </th>
                  <th>
                     Action
@@ -46,7 +45,5 @@
     <%= hidden_field_tag :sort, params[:sort] %>
     <%= will_paginate @bankings%>
 <% end %>
-
-
 </div>
 

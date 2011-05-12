@@ -3,10 +3,11 @@ class Banking < ActiveRecord::Base
 belongs_to :account_type
 belongs_to :user
 belongs_to :vle_representative_profile
+
  #Search
  def self.search(search)
     if search
-      where(:name_of_holder.matches => "%#{search}%") #from meta_where gem
+      where(:account_number.matches => "%#{search}%") #from meta_where gem
     else
       scoped
     end
